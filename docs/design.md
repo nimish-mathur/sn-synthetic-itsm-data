@@ -42,6 +42,8 @@ config/ngi.yaml ─► Python generator (seeded, deterministic)
 | D6 | ~3 % planted defects: missing category, retired category value, retired group | Gives P1 data-quality rules and P2 cleansing a real target | Defects must be documented so they aren't mistaken for bugs |
 | D7 | Story events: August dip, March 2026 failed ERP change + incident wave, MTTR improvement from Jan 2026 | Dashboards have findings to explain | Events are authored, and documented as such |
 | D8 | Generate in Europe/Paris local time, store UTC; admin user time zone Europe/Paris | Time zone handling explicit and testable (P4 variance cause) | None |
+| D9 | Add two incident subcategories under `software`: `erp` (ERP / SAP) and `mes` (MES / Shop floor) | OOTB software subcategories (`os`, `email`) cannot describe a manufacturer's core applications or the ERP story event | Small configuration change (update set `NGI-P0-02`) |
+| D10 | Reference data loaded with business rules **on** (dates kept); history loaded with business rules **off** | Reference data needs platform logic (e.g. group membership, role inheritance); history must not trigger the SLA engine | Two load modes to document and test |
 
 ## 5. KPI → field contract
 
@@ -65,11 +67,28 @@ config/ngi.yaml ─► Python generator (seeded, deterministic)
 3. **Instance checks:** after load, `now-sdk query` counts are compared with ground truth.
 4. **P4 reconciliation:** generator vs Platform Analytics vs Power BI.
 
-## 7. Known limitations
+## 7. Reference data
+| Table | Records | Notes |
+|---|---|---|
+| `core_company` | 1 | Northgate Industrial |
+| `cmn_location` | 6 | `NGI Lyon (HQ)` and five plants |
+| `cmn_department` | 10 | `NGI Production`, `NGI IT`, … |
+| `sys_user` | 3,500 | Names combined from per-country pools; e-mail on the reserved `.example` domain; `source = NGI-SYNTH-REF` |
+| `sys_user_group` | 12 | "NGI" prefix: the PDI already has demo groups named Service Desk, Network, Database, Hardware, Software |
+| `sys_user_grmember` | 64 | Agents are IT staff; site-bound groups use local staff; one group per agent |
+
+Created 30 days before the history window, so no ticket predates its caller or group.
+
+## 8. Rollback
+`task_sla` and reference tables have no `correlation_id`. Every run therefore writes `manifest.json` (sys_ids per table). Rollback deletes by that manifest, never by broad queries.
+
+## 9. Known limitations
 - No audit, journal or metric history: the activity stream is empty on historic records.
 - SLA rows are computed by the generator, not by the SLA engine.
 - Historic breakdowns reflect current values (for example, the final assignment group).
 - The escalation routing placeholder `<region>` resolves to the caller site's Workplace Support group.
+- Changes carry no change model (`chg_model`); the Brazil `model` change type is not used.
+- Incident close codes are case-sensitive values with spaces (e.g. `Solution provided`), used exactly as on the instance.
 
-## 8. Instance facts
+## 10. Instance facts
 Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.

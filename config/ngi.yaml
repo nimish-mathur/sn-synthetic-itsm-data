@@ -33,7 +33,22 @@ organisation:
     - {code: ROT, name: Rotterdam, country: NL, role: plant, employee_share: 0.12}
     - {code: VLC, name: Valencia,  country: ES, role: plant, employee_share: 0.10}
 
-  # "NGI" prefix avoids clashes with PDI demo groups (checked against T8.1 file 23)
+  departments:                      # share of employees per department (all sites)
+    Production: 0.38
+    Maintenance: 0.12
+    Quality: 0.07
+    Logistics: 0.10
+    Engineering: 0.09
+    Sales: 0.07
+    Finance: 0.05
+    Procurement: 0.05
+    HR: 0.03
+    IT: 0.04                        # agents are drawn from IT staff
+  agent_department: IT
+  email_domain: northgate-industrial.example   # reserved .example TLD – never a real mailbox
+
+  # "NGI" prefix avoids clashes with PDI demo groups: file 23 shows "Service Desk",
+  # "Network", "Database", "Hardware", "Software", "Help Desk" already exist
   assignment_groups:
     - {name: "NGI Service Desk",                agents: 14, tier: 1, sites: [LYO]}
     - {name: "NGI Workplace Support - West",    agents: 6,  tier: 2, sites: [LYO, VLC]}
@@ -81,6 +96,24 @@ incidents:
 
   first_contact_resolution_rate: 0.60   # resolved by Service Desk, reassignment_count = 0
   reassignments_when_escalated: {1: 0.70, 2: 0.22, 3: 0.08}
+
+  close_code_mix:                   # values exactly as on the instance (file 16)
+    "Solution provided": 0.60
+    "Workaround provided": 0.12
+    "Resolved by caller": 0.08
+    "User error": 0.07
+    "Known error": 0.04
+    "Resolved by change": 0.03
+    "Resolved by problem": 0.02
+    "Resolved by request": 0.02
+    "Duplicate": 0.02
+    "No resolution provided": 0.00
+  hold_reason_mix:                  # hold_reason values (file 19)
+    "1": 0.45                       # Awaiting Caller
+    "4": 0.25                       # Awaiting Vendor
+    "5": 0.10                       # Awaiting Change
+    "2": 0.10                       # Awaiting Evidence
+    "3": 0.10                       # Awaiting Problem
 
   # Lognormal durations in the SLA clock of each priority:
   # P1 = calendar time (24x7); P2–P4 = NGI business hours
@@ -187,14 +220,36 @@ output:
 # Items marked CONFIRM / FILL are completed from T8.1 files 16–23.
 # =============================================================================
 instance_facts:
-  incident_categories: [inquiry, software, hardware, network, database, password_reset]   # T2 + T4b query
-  incident_states: {new: 1, in_progress: 2, on_hold: 3, resolved: 6, closed: 7, canceled: 8}   # CONFIRM (file 17)
-  incident_close_codes: []          # FILL (file 16)
-  incident_hold_reasons: []         # FILL (file 19)
-  incident_subcategories: {}        # FILL (file 18)
-  change_states: {new: -5, assess: -4, authorize: -3, scheduled: -2, implement: -1, review: 0, closed: 3, canceled: 4}   # CONFIRM (file 20)
-  change_types: [standard, normal, emergency]                  # CONFIRM (file 20)
+  incident_categories: [inquiry, software, hardware, network, database, password_reset]   # T2 + T4b
+  incident_states: {new: 1, in_progress: 2, on_hold: 3, resolved: 6, closed: 7, canceled: 8}   # file 17
+  incident_close_codes:             # file 16 – note: values contain capitals and spaces
+    - "Duplicate"
+    - "Known error"
+    - "No resolution provided"
+    - "Resolved by caller"
+    - "Resolved by change"
+    - "Resolved by problem"
+    - "Resolved by request"
+    - "Solution provided"
+    - "Workaround provided"
+    - "User error"
+  incident_hold_reasons: {"1": Awaiting Caller, "2": Awaiting Evidence, "3": Awaiting Problem, "4": Awaiting Vendor, "5": Awaiting Change}   # file 19
+  incident_subcategories:           # file 18 – values contain spaces; password_reset has none
+    database: [oracle, "sql server", db2]
+    hardware: [cpu, keyboard, memory, mouse, disk, monitor]
+    inquiry: [email, "internal application", antivirus]
+    network: [dhcp, "ip address", dns, vpn, wireless]
+    software: [os, email]
+    password_reset: []
+  change_states: {new: -5, assess: -4, authorize: -3, scheduled: -2, implement: -1, review: 0, closed: 3, canceled: 4}   # file 20
+  change_types: [standard, normal, emergency, model]   # file 20 – "model" exists on Brazil, not used
   change_close_codes: [successful, successful_issues, unsuccessful]   # T2
-  mandatory_when_resolved:
-    incident: [close_code, close_notes]   # T7 data policy
-    change_request: []                    # FILL (files 21–22)
+  mandatory_when_resolved:          # files 21–22: only one active data policy with mandatory rules
+    incident: [close_code, close_notes]
+    change_request: []
+
+# D9 – NGI additions to the incident subcategory choice list (configuration, update set NGI-P0-02)
+ngi_choice_additions:
+  incident_subcategory:
+    - {value: erp, label: "ERP / SAP",        dependent_value: software}
+    - {value: mes, label: "MES / Shop floor", dependent_value: software}
