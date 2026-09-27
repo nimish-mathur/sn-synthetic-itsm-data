@@ -1,0 +1,200 @@
+# =============================================================================
+# Northgate Industrial (NGI) – synthetic ITSM data configuration
+# FICTIONAL client. ALL data generated. No real company or personal data.
+# Rationale for every value: docs/design.md (decisions D1–D8)
+# =============================================================================
+
+meta:
+  client_name: Northgate Industrial
+  client_code: NGI
+  seed: 20260927                    # same seed + same config = identical dataset
+  load_tag_prefix: NGI-SYNTH-       # written to correlation_id; enables rollback
+  generator_user: ngi.synth.loader  # sys_created_by / sys_updated_by on history
+  servicenow_release: "Brazil Patch 0 (glide-brazil-08-25-2026__patch0-08-26-2026)"
+
+# --- D2 time window / D8 time zone ------------------------------------------
+time:
+  start_date: 2025-07-01
+  end_date: today                   # resolved at run time (load date)
+  local_timezone: Europe/Paris      # generator reasons in local time, outputs UTC
+  autoclose_days: 7                 # glide.ui.autoclose.time (T2)
+  trickle:                          # daily job keeps trends alive after load
+    enabled: true
+    run_daily_at_local: "02:00"
+
+# --- D3 organisation --------------------------------------------------------
+organisation:
+  employees: 3500
+  sites:                            # all sites share the CET/CEST offset
+    - {code: LYO, name: Lyon,      country: FR, role: HQ,    employee_share: 0.30}
+    - {code: HAM, name: Hamburg,   country: DE, role: plant, employee_share: 0.18}
+    - {code: MIL, name: Milan,     country: IT, role: plant, employee_share: 0.15}
+    - {code: KAT, name: Katowice,  country: PL, role: plant, employee_share: 0.15}
+    - {code: ROT, name: Rotterdam, country: NL, role: plant, employee_share: 0.12}
+    - {code: VLC, name: Valencia,  country: ES, role: plant, employee_share: 0.10}
+
+  # "NGI" prefix avoids clashes with PDI demo groups (checked against T8.1 file 23)
+  assignment_groups:
+    - {name: "NGI Service Desk",                agents: 14, tier: 1, sites: [LYO]}
+    - {name: "NGI Workplace Support - West",    agents: 6,  tier: 2, sites: [LYO, VLC]}
+    - {name: "NGI Workplace Support - Central", agents: 6,  tier: 2, sites: [HAM, ROT]}
+    - {name: "NGI Workplace Support - East",    agents: 6,  tier: 2, sites: [MIL, KAT]}
+    - {name: "NGI Network Operations",          agents: 5,  tier: 2}
+    - {name: "NGI Database Administration",     agents: 4,  tier: 3}
+    - {name: "NGI SAP ERP Support",             agents: 6,  tier: 2}
+    - {name: "NGI Plant OT Support",            agents: 5,  tier: 2}
+    - {name: "NGI Identity and Access",         agents: 3,  tier: 2}
+    - {name: "NGI Application Support",         agents: 5,  tier: 2}
+    - {name: "NGI Infrastructure Engineering",  agents: 4,  tier: 3}
+    - {name: "NGI Legacy Helpdesk (retired)",   agents: 0,  tier: 1, active: false}   # D6 defect source
+
+# --- Incidents --------------------------------------------------------------
+incidents:
+  monthly_volume: 1400
+  weekday_weights: [1.15, 1.10, 1.05, 1.05, 0.95, 0.40, 0.30]   # Mon..Sun
+  business_hours_share: 0.88        # share opened Mon–Fri 08:00–18:00 local
+  month_factors: {12: 0.85}         # late-December slowdown (August: story_events)
+
+  priority_mix: {1: 0.01, 2: 0.07, 3: 0.52, 4: 0.40}
+  # impact/urgency -> priority, standard ServiceNow matrix
+  priority_matrix:
+    "1,1": 1
+    "1,2": 2
+    "2,1": 2
+    "1,3": 3
+    "2,2": 3
+    "3,1": 3
+    "2,3": 4
+    "3,2": 4
+    "3,3": 5
+
+  category_mix: {inquiry: 0.22, software: 0.30, hardware: 0.18, network: 0.10, database: 0.05, password_reset: 0.15}
+
+  # Routing when the Service Desk escalates (weights per category)
+  escalation_routing:
+    inquiry:        {"NGI Application Support": 1.0}
+    software:       {"NGI Application Support": 0.55, "NGI SAP ERP Support": 0.45}
+    hardware:       {"NGI Workplace Support - <region>": 0.80, "NGI Plant OT Support": 0.20}
+    network:        {"NGI Network Operations": 0.85, "NGI Plant OT Support": 0.15}
+    database:       {"NGI Database Administration": 1.0}
+    password_reset: {"NGI Identity and Access": 1.0}
+
+  first_contact_resolution_rate: 0.60   # resolved by Service Desk, reassignment_count = 0
+  reassignments_when_escalated: {1: 0.70, 2: 0.22, 3: 0.08}
+
+  # Lognormal durations in the SLA clock of each priority:
+  # P1 = calendar time (24x7); P2–P4 = NGI business hours
+  response_time_minutes:
+    1: {median: 6,   sigma: 0.7}    # target 15 min
+    2: {median: 25,  sigma: 0.8}    # target 60 min
+    3: {median: 70,  sigma: 0.9}    # target 240 min
+    4: {median: 150, sigma: 0.9}    # target 480 min
+  resolution_time_hours:
+    1: {median: 2.0, sigma: 0.6}    # target 4 h
+    2: {median: 4.0, sigma: 0.8}    # target 8 business h
+    3: {median: 5.0, sigma: 0.9}    # target 10 business h
+    4: {median: 9.0, sigma: 0.9}    # target 20 business h
+
+  on_hold: {rate: 0.08, median_hours: 16, sigma: 0.8}
+  reopen_rate: 0.04
+  cancel_rate: 0.02
+  long_running_share: 0.015         # vendor-wait tail, resolved after 30–90 days
+  stale_open_share: 0.10            # open incidents with no update for > 5 days
+
+# --- Changes ----------------------------------------------------------------
+changes:
+  monthly_volume: 180
+  type_mix: {standard: 0.55, normal: 0.40, emergency: 0.05}
+  close_code_mix:
+    standard:  {successful: 0.97, successful_issues: 0.02, unsuccessful: 0.01}
+    normal:    {successful: 0.88, successful_issues: 0.08, unsuccessful: 0.04}
+    emergency: {successful: 0.78, successful_issues: 0.12, unsuccessful: 0.10}
+  lead_time_days: {standard: 2, normal: 10, emergency: 0}
+  duration_hours: {median: 2.0, sigma: 0.7}
+  implementation_window: {weekday_evening: "18:00-22:00", weekend_share: 0.35}
+  implementing_groups:
+    - "NGI Infrastructure Engineering"
+    - "NGI Network Operations"
+    - "NGI Database Administration"
+    - "NGI SAP ERP Support"
+    - "NGI Application Support"
+    - "NGI Plant OT Support"
+  induced_incidents:                # incident.caused_by -> change
+    probability_if_unsuccessful: 0.30
+    incidents_per_event: [1, 4]
+    window_hours: 48
+
+# --- D4 SLAs ----------------------------------------------------------------
+sla:
+  schedule:
+    name: "NGI Business Hours - Europe/Paris"
+    days: [mon, tue, wed, thu, fri]
+    start: "08:00"
+    end: "18:00"
+    timezone: Europe/Paris
+    holidays: FR
+  definitions:                      # durations in minutes; "business days" written as hours
+    - {name: "NGI P1 response (15 min)",     priority: 1, target: response,   minutes: 15,   clock: 24x7}
+    - {name: "NGI P1 resolution (4 h)",      priority: 1, target: resolution, minutes: 240,  clock: 24x7}
+    - {name: "NGI P2 response (1 h)",        priority: 2, target: response,   minutes: 60,   clock: business}
+    - {name: "NGI P2 resolution (8 bh)",     priority: 2, target: resolution, minutes: 480,  clock: business}
+    - {name: "NGI P3 response (4 bh)",       priority: 3, target: response,   minutes: 240,  clock: business}
+    - {name: "NGI P3 resolution (10 bh)",    priority: 3, target: resolution, minutes: 600,  clock: business}
+    - {name: "NGI P4 response (8 bh)",       priority: 4, target: response,   minutes: 480,  clock: business}
+    - {name: "NGI P4 resolution (20 bh)",    priority: 4, target: resolution, minutes: 1200, clock: business}
+
+# --- D6 deliberate data-quality defects (switchable) ------------------------
+data_quality_defects:
+  enabled: true
+  missing_category_rate: 0.015
+  legacy_category:
+    value: pc_issue                 # retired value, not in the active choice list
+    rate: 0.03
+    only_before: 2026-01-01
+  retired_group:
+    name: "NGI Legacy Helpdesk (retired)"
+    rate: 0.01
+    only_before: 2025-11-01
+
+# --- D7 story events --------------------------------------------------------
+story_events:
+  august_dip:
+    month: 8
+    volume_factor: 0.70
+  erp_failed_change:
+    change_start_local: "2026-03-07 22:00"   # Saturday maintenance window
+    change_type: normal
+    close_code: unsuccessful
+    implementing_group: "NGI SAP ERP Support"
+    extra_incidents: 220
+    spread_days: 5                            # Mon 9 – Fri 13 March
+    category: software
+    priority_mix: {1: 0.05, 2: 0.35, 3: 0.60}
+  governance_improvement:
+    start: 2026-01-01
+    ramp_months: 6
+    resolution_time_factor_at_end: 0.75       # MTTR -25 % by July 2026
+    fcr_rate_at_end: 0.68
+
+# --- Output -----------------------------------------------------------------
+output:
+  batch_size: 200
+  directory: output/
+  ground_truth: true                # CSV exports + expected KPI values for validation
+
+# =============================================================================
+# INSTANCE FACTS – values read from the PDI (T2, T7, T8.1).
+# Items marked CONFIRM / FILL are completed from T8.1 files 16–23.
+# =============================================================================
+instance_facts:
+  incident_categories: [inquiry, software, hardware, network, database, password_reset]   # T2 + T4b query
+  incident_states: {new: 1, in_progress: 2, on_hold: 3, resolved: 6, closed: 7, canceled: 8}   # CONFIRM (file 17)
+  incident_close_codes: []          # FILL (file 16)
+  incident_hold_reasons: []         # FILL (file 19)
+  incident_subcategories: {}        # FILL (file 18)
+  change_states: {new: -5, assess: -4, authorize: -3, scheduled: -2, implement: -1, review: 0, closed: 3, canceled: 4}   # CONFIRM (file 20)
+  change_types: [standard, normal, emergency]                  # CONFIRM (file 20)
+  change_close_codes: [successful, successful_issues, unsuccessful]   # T2
+  mandatory_when_resolved:
+    incident: [close_code, close_notes]   # T7 data policy
+    change_request: []                    # FILL (files 21–22)

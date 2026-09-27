@@ -1,0 +1,75 @@
+# Design – sn-synthetic-itsm-data
+
+> **Transparency notice:** Northgate Industrial (NGI) is a fictional company. All records produced by this generator are synthetic.
+
+## 1. Purpose
+Produce 15 months of realistic, backdated ServiceNow ITSM history (incidents, changes, SLAs, assignment) for NGI. That history lets Platform Analytics (P1) and Power BI (P2) show genuine trends, and lets the migration project (P4) reconcile the two against a known ground truth.
+
+**Built on:** ServiceNow Brazil Patch 0 PDI (`glide-brazil-08-25-2026__patch0-08-26-2026`). Configuration lives in `config/ngi.yaml`.
+
+## 2. The core problem this design solves
+Records inserted today with past dates do **not** behave like records that aged naturally:
+
+| Gap | Consequence | Design response |
+|---|---|---|
+| The SLA engine runs in real time | Backdated incidents get no SLAs, or SLAs starting today | `task_sla` rows written directly with computed stages and breach flags |
+| No audit, metric or journal history | History-based measures cannot be computed | Every KPI input is an explicit field (see §5) |
+| Historic collection evaluates *current* field values | State-based backlog indicators produce false history | Backlog indicators use date conditions (P1) |
+| Breakdowns use current values | Past reassignments are not visible historically | Documented limitation (§7) |
+
+## 3. Architecture (D1)
+```
+config/ngi.yaml ─► Python generator (seeded, deterministic)
+                     ├─► JSON batches ─► ServiceNow loader (Script Include NGISynthLoader, global scope)
+                     │                     sets our sys_id, keeps our dates, business rules off,
+                     │                     respects data policies, tags correlation_id = NGI-SYNTH-<run>
+                     └─► ground truth (CSV + expected KPI values) ─► validation, P4 reconciliation
+```
+- **Why Python:** testable, readable, reproducible (seed), and produces ground truth as a by-product.
+- **Why a server-side loader:** only server code can set past system dates (`autoSysFields(false)`). This was verified on Brazil in the T7 smoke test.
+- **Why not the ServiceNow SDK for the loader:** SDK 4.8.1 documents neither global-scope builds nor Platform Analytics APIs. The SDK `query` command is used for fact-finding and validation.
+- **Deterministic sys_ids** (UUIDv5 → 32 hex): references resolve in one pass, and reloads are idempotent. Verified in T7.
+
+## 4. Decisions
+
+| ID | Decision | Rationale | Trade-off |
+|---|---|---|---|
+| D1 | Python generator + global Script Include loader | See §3 | Custom code (deviation from configuration-over-customization, documented in best-practices-references.md) |
+| D2 | 2025-07-01 → load date, plus daily trickle job | Trends continue after load; screenshots stay current | Trickle job must be maintained during the program |
+| D3 | 3,500 employees, 6 sites, 12 groups (~60 agents), ~1,400 incidents/month, ~180 changes/month | Plausible mid-size manufacturer | Volume ratio (~0.4 tickets per employee per month) is a heuristic, not a published benchmark |
+| D4 | NGI schedule Mon–Fri 08:00–18:00 Europe/Paris, FR holidays; 8 NGI SLA definitions; demo SLAs deactivated | Owned, documented, time-zone-explicit definitions | P1 resolution set to 4 h (vs OOTB 1 h) for realism. "Business days" written as business hours to avoid ambiguity |
+| D5 | Demo incidents and changes backed up to XML, then deleted before load | 2015–2027 demo records distort aging and trends | Demo data lost from PDI (backup kept) |
+| D6 | ~3 % planted defects: missing category, retired category value, retired group | Gives P1 data-quality rules and P2 cleansing a real target | Defects must be documented so they aren't mistaken for bugs |
+| D7 | Story events: August dip, March 2026 failed ERP change + incident wave, MTTR improvement from Jan 2026 | Dashboards have findings to explain | Events are authored, and documented as such |
+| D8 | Generate in Europe/Paris local time, store UTC; admin user time zone Europe/Paris | Time zone handling explicit and testable (P4 variance cause) | None |
+
+## 5. KPI → field contract
+
+| KPI | Fields the generator must write |
+|---|---|
+| Volume by priority / category / group / site | `opened_at`, `impact`, `urgency`, `priority` (standard matrix), `category`, `subcategory`, `assignment_group`, `location`, `caller_id` |
+| MTTR | `opened_at`, `resolved_at`, `calendar_stc`, `business_stc` |
+| MTTA | Response `task_sla` rows (`start_time`, `end_time`) |
+| SLA attainment / breach | `task_sla`: `sla`, `stage`, `has_breached`, `planned_end_time`, `business_percentage`, `active` |
+| Backlog & aging | `opened_at`, `resolved_at`, `closed_at`, `state`, `incident_state`, `active` |
+| Inactivity (> 5 days not worked) | `sys_updated_on` |
+| First-contact resolution | `reassignment_count`, final `assignment_group` |
+| Reopen rate | `reopen_count` |
+| Resolution quality | `close_code`, `close_notes` (mandatory by data policy, found in T7) |
+| Change success rate | `change_request`: `type`, `state`, `close_code`, `start_date`, `end_date` |
+| Change-induced incidents | `incident.caused_by` |
+
+## 6. Validation approach
+1. **Unit tests** (pytest): distributions, shares summing to 1, date ordering (opened ≤ resolved ≤ closed), priority matrix consistency.
+2. **Ground truth:** the generator exports expected KPI values per month.
+3. **Instance checks:** after load, `now-sdk query` counts are compared with ground truth.
+4. **P4 reconciliation:** generator vs Platform Analytics vs Power BI.
+
+## 7. Known limitations
+- No audit, journal or metric history: the activity stream is empty on historic records.
+- SLA rows are computed by the generator, not by the SLA engine.
+- Historic breakdowns reflect current values (for example, the final assignment group).
+- The escalation routing placeholder `<region>` resolves to the caller site's Workplace Support group.
+
+## 8. Instance facts
+Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.
