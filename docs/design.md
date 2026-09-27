@@ -79,10 +79,19 @@ config/ngi.yaml ─► Python generator (seeded, deterministic)
 
 Created 30 days before the history window, so no ticket predates its caller or group.
 
-## 8. Rollback
+## 8. Incident arrivals (generator part 1)
+- **Daily volume:** Poisson draw around `monthly_volume × 12 / 365`, scaled by weekday weight, month factor and the August dip. French public holidays get the Saturday weight.
+- **Time of day:** on working days, 88 % between 08:00 and 18:00 Paris time; weekends and holidays between 07:00 and 21:00. Converted to UTC for ServiceNow (summer UTC+2, winter UTC+1; tested).
+- **Window:** history ends the day **before** the load date; the daily trickle job takes over from load day.
+- **Attributes:** caller drawn from all 3,500 users (location follows the caller), category and priority from configured mixes, impact/urgency always consistent with the priority matrix, subcategory valid for its category.
+- **Load order = time order:** records are sorted by `opened_at`, so ServiceNow assigns INC numbers chronologically.
+- **ERP wave (D7b):** 220 extra incidents, 9–13 March 2026, category `software` / subcategory `erp`, each with `caused_by` pointing to the failed change. The change's sys_id is derived from a fixed key, so the change module will create exactly that record.
+- **Independent random streams:** base volume and the ERP wave use separate streams; switching the event off does not reshuffle the base data.
+
+## 9. Rollback
 `task_sla` and reference tables have no `correlation_id`. Every run therefore writes `manifest.json` (sys_ids per table). Rollback deletes by that manifest, never by broad queries.
 
-## 9. Known limitations
+## 10. Known limitations
 - No audit, journal or metric history: the activity stream is empty on historic records.
 - SLA rows are computed by the generator, not by the SLA engine.
 - Historic breakdowns reflect current values (for example, the final assignment group).
@@ -90,5 +99,5 @@ Created 30 days before the history window, so no ticket predates its caller or g
 - Changes carry no change model (`chg_model`); the Brazil `model` change type is not used.
 - Incident close codes are case-sensitive values with spaces (e.g. `Solution provided`), used exactly as on the instance.
 
-## 10. Instance facts
+## 11. Instance facts
 Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.

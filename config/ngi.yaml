@@ -68,6 +68,8 @@ incidents:
   monthly_volume: 1400
   weekday_weights: [1.15, 1.10, 1.05, 1.05, 0.95, 0.40, 0.30]   # Mon..Sun
   business_hours_share: 0.88        # share opened Mon–Fri 08:00–18:00 local
+  weekend_hours: ["07:00", "21:00"] # weekend / FR public holiday tickets fall in this window
+  holiday_behaviour: saturday       # FR public holidays get the Saturday volume weight
   month_factors: {12: 0.85}         # late-December slowdown (August: story_events)
 
   priority_mix: {1: 0.01, 2: 0.07, 3: 0.52, 4: 0.40}
@@ -84,6 +86,7 @@ incidents:
     "3,3": 5
 
   category_mix: {inquiry: 0.22, software: 0.30, hardware: 0.18, network: 0.10, database: 0.05, password_reset: 0.15}
+  software_subcategory_weights: {os: 0.25, email: 0.25, erp: 0.35, mes: 0.15}   # erp/mes need D9
 
   # Routing when the Service Desk escalates (weights per category)
   escalation_routing:
@@ -201,6 +204,8 @@ story_events:
     implementing_group: "NGI SAP ERP Support"
     extra_incidents: 220
     spread_days: 5                            # Mon 9 – Fri 13 March
+    first_day_local: 2026-03-09
+    daily_profile: [0.35, 0.25, 0.18, 0.12, 0.10]   # wave decays over the week
     category: software
     priority_mix: {1: 0.05, 2: 0.35, 3: 0.60}
   governance_improvement:
