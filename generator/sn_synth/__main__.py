@@ -15,6 +15,7 @@ from collections import Counter
 
 from .incidents import generate_arrivals, monthly_counts
 from .lifecycle import apply_lifecycle
+from .sla import attainment_by_quarter, build_sla_rows
 from .reference import build_reference
 
 PREVIEW_FIELDS = ["opened_at", "priority", "category", "subcategory", "short_description",
@@ -64,6 +65,22 @@ def main() -> None:
                             round(int(bstc) / 3600, 1) if bstc else ""] +
                            [d.record.get(k, "") for k in PREVIEW_FIELDS])
         print(f"Preview written to {path}")
+
+        sla_rows = build_sla_rows(cfg, drafts)
+        print(f"SLA records: {len(sla_rows)}")
+        print("SLA attainment by quarter of completion (response | resolution):")
+        response, resolution = attainment_by_quarter(sla_rows, "response"), attainment_by_quarter(sla_rows, "resolution")
+        for q in resolution:
+            print(f"  {q}   {response.get(q, 0):6.1%} | {resolution[q]:6.1%}")
+        sla_path = preview / "task_sla.csv"
+        fields = ["sla_name", "stage", "has_breached", "start_time", "end_time", "business_percentage",
+                  "business_duration", "business_pause_duration"]
+        with sla_path.open("w", newline="", encoding="utf-8-sig") as f:
+            w = csv.writer(f)
+            w.writerow(fields)
+            for r in sla_rows:
+                w.writerow([r.get(k, "") for k in fields])
+        print(f"SLA preview written to {sla_path}")
 
 
 if __name__ == "__main__":

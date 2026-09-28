@@ -97,17 +97,35 @@ Created 30 days before the history window, so no ticket predates its caller or g
 - **Resolve times:** `calendar_stc` (real seconds) and `business_stc` (business seconds) computed from the stored, whole-second timestamps.
 - **Resulting SLA picture (before hold pauses, run of 2026-09-27):** resolution targets missed by ~27 % of incidents in H2 2025, ~18 % in Q3 2026: a governance story, not a perfect service.
 
-## 10. Rollback
+## 10. SLA records (generator part 3)
+The SLA engine only runs in real time, so the generator computes the `task_sla` rows the engine would have produced: two per incident (response, resolution) against the 8 NGI definitions.
+
+| Rule | Behaviour |
+|---|---|
+| Start | `opened_at` |
+| Response stop | First response (work start) |
+| Resolution stop | **Final** resolution |
+| Resolution pauses | While On Hold, and while Resolved before a reopen |
+| Clock | P1 real time (24×7); P2–P4 NGI business hours, with `schedule` |
+| Breach | Elapsed time in the SLA clock, excluding pauses, above the target |
+| Cancelled incidents | SLAs `cancelled` at the cancellation time |
+| Open at cut-off | `in_progress` (or `paused` if on hold), percentages measured to the cut-off |
+
+Durations use ServiceNow's duration format (offset from 1970-01-01). SLA definition and schedule references are held by name and resolved to instance sys_ids at export (T8.7), after the definitions exist (T8.9).
+
+**Resulting attainment (run of 2026-09-27):** response ≈ 90 % throughout; resolution ≈ 78 % in 2025-Q3 rising to ≈ 86 % in 2026-Q3.
+
+## 11. Rollback
 `task_sla` and reference tables have no `correlation_id`. Every run therefore writes `manifest.json` (sys_ids per table). Rollback deletes by that manifest, never by broad queries.
 
-## 11. Known limitations
+## 12. Known limitations
 - No audit, journal or metric history: the activity stream is empty on historic records.
 - Only the final assignment group is stored; intermediate groups of reassigned incidents are not.
-- SLA rows are computed by the generator, not by the SLA engine.
+- SLA rows are computed by the generator, not by the SLA engine. `percentage` / `time_left` follow a documented approximation; analytics use `has_breached`, `business_percentage` and `business_duration`.
 - Historic breakdowns reflect current values (for example, the final assignment group).
 - The escalation routing placeholder `<region>` resolves to the caller site's Workplace Support group.
 - Changes carry no change model (`chg_model`); the Brazil `model` change type is not used.
 - Incident close codes are case-sensitive values with spaces (e.g. `Solution provided`), used exactly as on the instance.
 
-## 12. Instance facts
+## 13. Instance facts
 Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.
