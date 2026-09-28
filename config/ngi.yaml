@@ -241,6 +241,14 @@ story_events:
     resolution_time_factor_at_end: 0.75       # MTTR -25 % by July 2026
     fcr_rate_at_end: 0.68
 
+# --- Loader transport (T8.8) ------------------------------------------------
+loader:
+  instance: dev395964
+  base_path: "/api/1814931/ngi_synth"   # copy "Base API path" from the Scripted REST API record
+  user: admin                             # password: env var SN_PASSWORD, or prompted – never stored
+  timeout_seconds: 120
+  retries: 3
+
 # --- Output -----------------------------------------------------------------
 output:
   batch_size: 200

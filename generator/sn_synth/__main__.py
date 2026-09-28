@@ -2,7 +2,12 @@
 
     python -m sn_synth reference   -> reference data batch files
     python -m sn_synth export      -> loadable batch files for every table + manifest + ground truth
+    python -m sn_synth bundle      -> files to attach to the "NGI Synthetic Load" Fix Script (browser route)
     python -m sn_synth preview     -> full dataset preview: changes, incidents, SLAs (CSV for Excel)
+    python -m sn_synth load --smoke                 -> end-to-end transport check (2 test incidents, rolled back)
+    python -m sn_synth load [--tables a,b] [--max-batches N] [--continue-on-error]
+    python -m sn_synth rollback --yes [--tables a,b] -> delete everything listed in output/load/manifest.json
+    python -m sn_synth credentials --set [--show] | --check | --delete  -> password in Windows Credential Manager
     python -m sn_synth incidents   -> same as preview (kept for compatibility)
 """
 from __future__ import annotations
@@ -13,7 +18,7 @@ import json
 from pathlib import Path
 
 from .config import DEFAULT_CONFIG, REPO_ROOT, load_config
-from .export import REFERENCE_OPTIONS, export_dataset, write_batches
+from .export import REFERENCE_OPTIONS, export_dataset, write_batches, write_upload_bundle
 from collections import Counter
 
 from .incidents import monthly_counts
@@ -26,15 +31,61 @@ PREVIEW_FIELDS = ["opened_at", "priority", "category", "subcategory", "short_des
 STATE_LABELS = {"1": "New", "2": "In Progress", "3": "On Hold", "6": "Resolved", "7": "Closed", "8": "Canceled"}
 
 
+def _transport(args, cfg, out, tables, client_from_config, run_load, run_rollback, run_smoke) -> None:
+    client = client_from_config(cfg)
+    if args.command == "load" and args.smoke:
+        print("Transport smoke test:")
+        print("RESULT: " + ("PASS" if run_smoke(client) else "FAIL"))
+    elif args.command == "load":
+        totals = run_load(client, out / "load", tables, args.max_batches, not args.continue_on_error)
+        print(f"Batches {totals['batches']} | inserted {totals['inserted']} | skipped {totals['skipped']} | "
+              f"errors {len(totals['errors'])}" + ("  (STOPPED)" if totals["stopped"] else ""))
+    else:
+        run_rollback(client, out / "load" / "manifest.json", tables)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="sn_synth", description="NGI synthetic ITSM data generator")
-    parser.add_argument("command", choices=["reference", "export", "preview", "incidents"], help="what to generate")
+    parser.add_argument("command", choices=["reference", "export", "bundle", "preview", "incidents", "load", "rollback", "credentials"], help="what to generate")
     parser.add_argument("--config", default=str(DEFAULT_CONFIG))
     parser.add_argument("--out", default=None, help="output directory (default: output/ in the repo)")
+    parser.add_argument("--smoke", action="store_true", help="load: transport smoke test only")
+    parser.add_argument("--tables", default=None, help="load/rollback: comma-separated table names")
+    parser.add_argument("--max-batches", type=int, default=None, help="load: send at most N batch files")
+    parser.add_argument("--continue-on-error", action="store_true", help="load: do not stop at the first error")
+    parser.add_argument("--yes", action="store_true", help="rollback: confirm deletion")
+    parser.add_argument("--set", action="store_true", help="credentials: verify and store the password")
+    parser.add_argument("--check", action="store_true", help="credentials: test the stored password")
+    parser.add_argument("--delete", action="store_true", help="credentials: remove the stored password")
+    parser.add_argument("--show", action="store_true", help="credentials --set: show the password while typing")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
     out = Path(args.out) if args.out else REPO_ROOT / cfg["output"]["directory"]
+    tables = args.tables.split(",") if args.tables else None
+
+    if args.command == "credentials":
+        from . import credentials
+        instance, user = cfg["loader"]["instance"], cfg["loader"]["user"]
+        if args.set:
+            credentials.set_password(instance, user, show=args.show)
+        elif args.delete:
+            credentials.delete(instance, user)
+        else:
+            credentials.check(instance, user)
+        return
+
+    if args.command in ("load", "rollback"):
+        from .transport import LoaderError, client_from_config, run_load, run_rollback, run_smoke
+        if args.command == "rollback" and not args.yes:
+            print("Rollback deletes every record in output/load/manifest.json. Re-run with --yes to confirm.")
+            return
+        try:
+            _transport(args, cfg, out, tables, client_from_config, run_load, run_rollback, run_smoke)
+        except LoaderError as exc:
+            raise SystemExit(f"ERROR: {exc}")
+        return
+
     ref = build_reference(cfg)
 
     if args.command == "reference":
@@ -44,6 +95,15 @@ def main() -> None:
         for table, rows in ref.tables.items():
             print(f"  {table:20s} {len(rows):6d}")
         print(f"{len(files)} batch files + manifest.json written to {out / 'reference'}")
+
+    elif args.command == "bundle":
+        from .transport import smoke_payload
+        ds = generate_all(cfg)
+        files = write_upload_bundle(ds, out / "upload", cfg["meta"]["load_tag_prefix"], smoke_payload())
+        size = sum(p.stat().st_size for p in files) / 1e6
+        print(f"{len(files)} files + manifest.json in {out / 'upload'}  ({size:.0f} MB)")
+        print("  00-smoke-incident.json  -> attach alone for the smoke test (MODE = 'smoke')")
+        print("  01-... to 09-...        -> attach all + manifest.json for the load (MODE = 'load')")
 
     elif args.command == "export":
         ds = generate_all(cfg)

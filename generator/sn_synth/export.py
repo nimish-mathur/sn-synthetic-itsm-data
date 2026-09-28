@@ -95,3 +95,35 @@ def export_dataset(ds, out_dir: Path, batch_size: int, tag_prefix: str) -> tuple
     gt_path = gt_dir / "counts.json"
     gt_path.write_text(json.dumps(ground_truth(ds), indent=1, ensure_ascii=False), encoding="utf-8")
     return files, gt_path
+
+
+# --- Browser route (no API password): files attached to a Fix Script in ServiceNow ----------
+
+UPLOAD_CHUNK = 1000        # records per file: ~1 MB, well below attachment read limits
+
+
+def write_upload_bundle(ds, out_dir: Path, tag_prefix: str, smoke_payload: dict,
+                        chunk: int = UPLOAD_CHUNK) -> list[Path]:
+    """Files for the 'NGI Synthetic Load' Fix Script. ASCII-only JSON (accents escaped as \\uXXXX),
+    so names like Müller or Wiśniewski survive whatever encoding the attachment is read with."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for old in out_dir.glob("*.json"):
+        old.unlink()
+    smoke = out_dir / "00-smoke-incident.json"
+    smoke.write_text(json.dumps(smoke_payload, ensure_ascii=True, separators=(",", ":")), encoding="ascii")
+    files = [smoke]
+    manifest = {"run_tag": tag_prefix + "LOAD-01", "tables": {}}
+    tables = dataset_tables(ds)
+    for order, table in enumerate(LOAD_ORDER, start=1):
+        rows = tables.get(table, [])
+        if not rows:
+            continue
+        manifest["tables"][table] = [r["sys_id"] for r in rows]
+        for n, start in enumerate(range(0, len(rows), chunk), start=1):
+            payload = {"run_tag": manifest["run_tag"], "table": table, "options": OPTIONS[table],
+                       "resolve": RESOLVE.get(table, {}), "records": rows[start:start + chunk]}
+            path = out_dir / f"{order:02d}-{table}-{n:03d}.json"
+            path.write_text(json.dumps(payload, ensure_ascii=True, separators=(",", ":")), encoding="ascii")
+            files.append(path)
+    (out_dir / "manifest.json").write_text(json.dumps(manifest, separators=(",", ":")), encoding="ascii")
+    return files
