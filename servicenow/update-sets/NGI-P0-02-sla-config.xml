@@ -1,27 +1,604 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<unload unload_date="2026-09-28 18:23:55">
-<sys_update_set action="INSERT_OR_UPDATE">
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2026-09-28 19:48:29">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
 <application display_value="Global">global</application>
-<base_update_set display_value=""/>
-<batch_install_plan display_value=""/>
-<completed_by display_value=""/>
-<completed_on>2026-09-28 17:28:20</completed_on>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
 <description/>
-<install_date/>
-<installed_from/>
-<is_default>false</is_default>
-<merged_to display_value=""/>
+<inserted/>
 <name>NGI-P0-02-sla-config</name>
 <origin_sys_id/>
 <parent display_value=""/>
 <release_date/>
-<remote_sys_id display_value=""/>
-<state>in progress</state>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>8dfb426e472f8710490f8c64116d43bb</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
 <sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 17:28:39</sys_created_on>
-<sys_id>8dfb426e472f8710490f8c64116d43bb</sys_id>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>290c26a24763c710490f8c64116d4384</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 17:28:39</sys_updated_on>
-</sys_update_set>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_375397f4c3143200b6dcdfdc64d3ae60</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 08:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>Priority 4 response (8 hours)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="8-5 weekdays">08fcd0830a0a0b2600079f56b1adb9ae</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=4^assignment_groupISNOTEMPTY^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="4 - Low" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="4"/><item endquery="false" field="assignment_group" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">incident_state!=1^assigned_toISNOTEMPTY^EQ<item display_value="New" endquery="false" field="incident_state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="false" field="assigned_to" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2017-01-11 15:37:20</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>375397f4c3143200b6dcdfdc64d3ae60</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Priority 4 response (8 hours)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_375397f4c3143200b6dcdfdc64d3ae60</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:40</sys_updated_on><target>response</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=375397f4c3143200b6dcdfdc64d3ae60"/></record_update>]]></payload>
+<payload_hash>1089298002</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>210c26a24763c710490f8c64116d4387</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363bc60000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 4 response (8 hours)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>d9a556e28faf87103ff12abb224b7617</update_guid>
+<update_guid_history>d9a556e28faf87103ff12abb224b7617:1089298002,99a556e2a9af87101b4e60bf79f36e14:342999889</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_6e43d6ea476f8710490f8c64116d43bd</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 04:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P1 resolution (4 h)</name><pause_condition table="incident">state=3^EQ<item display_value="On Hold" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=1^EQ<item display_value="1 - Critical" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state=6^EQ<item display_value="Resolved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:00:23</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>6e43d6ea476f8710490f8c64116d43bd</sys_id><sys_mod_count>5</sys_mod_count><sys_name>NGI P1 resolution (4 h)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_6e43d6ea476f8710490f8c64116d43bd</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:33:58</sys_updated_on><target>resolution</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=6e43d6ea476f8710490f8c64116d43bd"/></record_update>]]></payload>
+<payload_hash>197133376</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>250c26a24763c710490f8c64116d4388</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b91be0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P1 resolution (4 h)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>e6fa9aae64af8710a66cb793538d22c6</update_guid>
+<update_guid_history>e6fa9aae64af8710a66cb793538d22c6:197133376,ee1a5e2ec2af871005f4b993fb579b1a:-1330703743,f6589e667eaf8710256a7b9f1c63a865:197133376,2408122a6aaf871018d9fc82161522ef:-1720392228,ba83daaedb6f8710e176de596776e1ae:-615419979,7e43d6ea5d6f8710a440aa3ac933d1c1:-1690924793</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_ef4516a247af8710490f8c64116d4379</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 08:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P4 response (8 bh)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="NGI Business Hours - Europe/Paris">032c0aae472f8710490f8c64116d430c</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=4^EQ<item display_value="4 - Low" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="4"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state!=1^EQ<item display_value="New" endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:09:12</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>ef4516a247af8710490f8c64116d4379</sys_id><sys_mod_count>2</sys_mod_count><sys_name>NGI P4 response (8 bh)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_ef4516a247af8710490f8c64116d4379</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:34:00</sys_updated_on><target>response</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=ef4516a247af8710490f8c64116d4379"/></record_update>]]></payload>
+<payload_hash>-283097629</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>310c26a24763c710490f8c64116d438c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b9c010000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P4 response (8 bh)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>93fadaae4aaf87108b0859f4e127f835</update_guid>
+<update_guid_history>93fadaae4aaf87108b0859f4e127f835:-283097629,3b1a5e2e9caf871059a9e41c7ced009c:1203717250,ff4516a2c8af87103f3aa5cf4c21337d:-283097629</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_98d4966247af8710490f8c64116d43e8</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 20:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P4 resolution (20 bh)</name><pause_condition table="incident">state=3^EQ<item display_value="On Hold" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="NGI Business Hours - Europe/Paris">032c0aae472f8710490f8c64116d430c</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=4^EQ<item display_value="4 - Low" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="4"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state=6^EQ<item display_value="Resolved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:07:04</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>98d4966247af8710490f8c64116d43e8</sys_id><sys_mod_count>4</sys_mod_count><sys_name>NGI P4 resolution (20 bh)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_98d4966247af8710490f8c64116d43e8</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:34:01</sys_updated_on><target>resolution</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=98d4966247af8710490f8c64116d43e8"/></record_update>]]></payload>
+<payload_hash>-835869102</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>390c26a24763c710490f8c64116d4389</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b9d420000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P4 resolution (20 bh)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>57fadaae65af8710c560cce11cdd533c</update_guid>
+<update_guid_history>57fadaae65af8710c560cce11cdd533c:-835869102,571a5e2e84af87109c21024b4e04ba87:1753235313,f458526aceaf8710ec14134f5b857649:-835869102,b6f4da6206af871036a938445a98b1ca:1828979921,98d49662e6af871061f7e1f8e2e8c4ec:-283097629</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_b222c582d732220035ae23c7ce6103a7</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 01:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="SLA notification and escalation flow">0335e63573333300e289235f04f6a70f</flow><name>Database group resolution (P1 only)</name><pause_condition table="incident">incident_stateIN3^hold_reason=1^NQincident_state=6^EQ<item display_value="On Hold" endquery="false" field="incident_state" goto="false" newquery="false" operator="IN" or="false" value="3"/><item display_value="Awaiting Caller" endquery="false" field="hold_reason" goto="false" newquery="false" operator="=" or="false" value="1"/><item display_value="Resolved" endquery="false" field="incident_state" goto="false" newquery="true" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>no_schedule</schedule_source><schedule_source_field/><set_start_to>approval_set</set_start_to><start_condition table="incident">assignment_group=287ee6fea9fe198100ada7950d0b1b73^priority=1^EQ<item display_table="sys_user_group" display_value="Database" endquery="false" field="assignment_group" goto="false" newquery="false" operator="=" or="false" value="287ee6fea9fe198100ada7950d0b1b73"/><item display_value="1 - Critical" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">assignment_group!=287ee6fea9fe198100ada7950d0b1b73^ORincident_state=7^EQ<item display_table="sys_user_group" display_value="Database" endquery="false" field="assignment_group" goto="false" newquery="false" operator="!=" or="false" value="287ee6fea9fe198100ada7950d0b1b73"/><item display_value="Closed" endquery="false" field="incident_state" goto="false" newquery="false" operator="=" or="true" value="7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2016-11-01 12:41:09</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>b222c582d732220035ae23c7ce6103a7</sys_id><sys_mod_count>9</sys_mod_count><sys_name>Database group resolution (P1 only)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_b222c582d732220035ae23c7ce6103a7</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:41</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>OLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=b222c582d732220035ae23c7ce6103a7"/></record_update>]]></payload>
+<payload_hash>-1195359403</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>3d0c26a24763c710490f8c64116d438a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363f7f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>Database group resolution (P1 only)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>a9a556e294af8710fa40496b9c29d347</update_guid>
+<update_guid_history>a9a556e294af8710fa40496b9c29d347:-1195359403,69a556e221af87103dc0b3dd32371444:-1275769802</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Service Level Management - ATF">65b48e35b76233004fbc2089ee11a99a</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_00e277560f6233004fbc309c4e767e1e</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 01:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>ATF - test all conditions</name><pause_condition table="incident">state=3^EQ<item display_value="On Hold" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition table="incident">assigned_to=babb4639b76233004fbc2089ee11a97f^EQ<item display_table="sys_user" display_value="ATF Service Level Management" endquery="false" field="assigned_to" goto="false" newquery="false" operator="=" or="false" value="babb4639b76233004fbc2089ee11a97f"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></reset_condition><resume_condition table="incident">assignment_groupISNOTEMPTY^EQ<item endquery="false" field="assignment_group" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></resume_condition><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>no_schedule</schedule_source><schedule_source_field/><set_start_to>work_end</set_start_to><start_condition table="incident">active=true^short_descriptionSTARTSWITHATF SLA Incident 2^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item endquery="false" field="short_description" goto="false" newquery="false" operator="STARTSWITH" or="false" value="ATF SLA Incident 2"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state=6^EQ<item display_value="Resolved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2019-07-12 14:51:45</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>00e277560f6233004fbc309c4e767e1e</sys_id><sys_mod_count>4</sys_mod_count><sys_name>ATF - test all conditions</sys_name><sys_overrides/><sys_package display_value="Service Level Management - ATF" source="sn_slm_atf">65b48e35b76233004fbc2089ee11a99a</sys_package><sys_policy/><sys_scope display_value="Service Level Management - ATF">65b48e35b76233004fbc2089ee11a99a</sys_scope><sys_update_name>contract_sla_00e277560f6233004fbc309c4e767e1e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:30:05</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=00e277560f6233004fbc309c4e767e1e"/></record_update>]]></payload>
+<payload_hash>-1055428178</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>610c26a24763c710490f8c64116d4385</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94809250000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>ATF - test all conditions</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>c21a1e2e42af87104895f69679508e96</update_guid>
+<update_guid_history>c21a1e2e42af87104895f69679508e96:-1055428178,f91ade26d9af8710b91893e666343e4a:-1912132493</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_2ca94b74c3143200b6dcdfdc64d3ae93</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 00:15:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>Priority 1 response (15 minutes)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>no_schedule</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=1^assignment_groupISNOTEMPTY^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="1 - Critical" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="1"/><item endquery="false" field="assignment_group" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state!=1^assigned_toISNOTEMPTY^EQ<item display_value="New" endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="false" field="assigned_to" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2017-01-11 14:54:47</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>2ca94b74c3143200b6dcdfdc64d3ae93</sys_id><sys_mod_count>4</sys_mod_count><sys_name>Priority 1 response (15 minutes)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_2ca94b74c3143200b6dcdfdc64d3ae93</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:39</sys_updated_on><target>response</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=2ca94b74c3143200b6dcdfdc64d3ae93"/></record_update>]]></payload>
+<payload_hash>1779337502</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>610c26a24763c710490f8c64116d4386</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e93638f90000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 1 response (15 minutes)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>c9a5d6ea786f8710fee729e686f92090</update_guid>
+<update_guid_history>c9a5d6ea786f8710fee729e686f92090:1779337502,89a5d6ea9e6f8710ea54a0ceffd26b8d:-904924609</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_3b524982d732220035ae23c7ce6103e4</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 03:30:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="SLA notification and escalation flow">0335e63573333300e289235f04f6a70f</flow><name>SAN 001 contract resolution (3.5 hour)</name><pause_condition table="incident">incident_stateIN3^hold_reason=1^NQincident_state=6^EQ<item display_value="On Hold" endquery="false" field="incident_state" goto="false" newquery="false" operator="IN" or="false" value="3"/><item display_value="Awaiting Caller" endquery="false" field="hold_reason" goto="false" newquery="false" operator="=" or="false" value="1"/><item display_value="Resolved" endquery="false" field="incident_state" goto="false" newquery="true" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>no_schedule</schedule_source><schedule_source_field/><set_start_to>approval_set</set_start_to><start_condition table="incident">cmdb_ci=109562a3c611227500a7b7ff98cc0dc7^EQ<item display_table="cmdb_ci" display_value="Storage Area Network 001" endquery="false" field="cmdb_ci" goto="false" newquery="false" operator="=" or="false" value="109562a3c611227500a7b7ff98cc0dc7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">cmdb_ci!=109562a3c611227500a7b7ff98cc0dc7^ORincident_state=7^EQ<item display_table="cmdb_ci" display_value="Storage Area Network 001" endquery="false" field="cmdb_ci" goto="false" newquery="false" operator="!=" or="false" value="109562a3c611227500a7b7ff98cc0dc7"/><item display_value="Closed" endquery="false" field="incident_state" goto="false" newquery="false" operator="=" or="true" value="7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2016-11-01 12:42:02</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>3b524982d732220035ae23c7ce6103e4</sys_id><sys_mod_count>6</sys_mod_count><sys_name>SAN 001 contract resolution (3.5 hour)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_3b524982d732220035ae23c7ce6103e4</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:40</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>Underpinning contract</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=3b524982d732220035ae23c7ce6103e4"/></record_update>]]></payload>
+<payload_hash>1208470612</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>650c26a24763c710490f8c64116d4387</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363c760000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>SAN 001 contract resolution (3.5 hour)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>dda556e2c5af871097ad37fc2f5e641e</update_guid>
+<update_guid_history>dda556e2c5af871097ad37fc2f5e641e:1208470612,9da556e27caf87100be6be6282de741b:848983571</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_71949e6e476f8710490f8c64116d4336</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 10:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P3 resolution (10 bh)</name><pause_condition table="incident">state=3^EQ<item display_value="On Hold" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="NGI Business Hours - Europe/Paris">032c0aae472f8710490f8c64116d430c</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=3^EQ<item display_value="3 - Moderate" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state=6^EQ<item display_value="Resolved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:06:04</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>71949e6e476f8710490f8c64116d4336</sys_id><sys_mod_count>3</sys_mod_count><sys_name>NGI P3 resolution (10 bh)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_71949e6e476f8710490f8c64116d4336</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:34:00</sys_updated_on><target>resolution</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=71949e6e476f8710490f8c64116d4336"/></record_update>]]></payload>
+<payload_hash>1302709713</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>690c26a24763c710490f8c64116d4388</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b98ce0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P3 resolution (10 bh)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>c3fa9aaefdaf871058a6f10037c3affc</update_guid>
+<update_guid_history>c3fa9aaefdaf871058a6f10037c3affc:1302709713,761a5e2e70af8710a85c6f59ab57e460:-1594816494,cc489e2a8baf8710a2d2f7b916152ebe:1302709713,71949e6e4b6f87100d6f291bd3046b3a:-277972730</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_ba320982d732220035ae23c7ce610347</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 04:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="SLA notification and escalation flow">0335e63573333300e289235f04f6a70f</flow><name>Network group resolution</name><pause_condition table="incident">incident_stateIN3^hold_reason=1^NQincident_state=6^EQ<item display_value="On Hold" endquery="false" field="incident_state" goto="false" newquery="false" operator="IN" or="false" value="3"/><item display_value="Awaiting Caller" endquery="false" field="hold_reason" goto="false" newquery="false" operator="=" or="false" value="1"/><item display_value="Resolved" endquery="false" field="incident_state" goto="false" newquery="true" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>no_schedule</schedule_source><schedule_source_field/><set_start_to>approval_set</set_start_to><start_condition table="incident">assignment_group=287ebd7da9fe198100f92cc8d1d2154e^EQ<item display_table="sys_user_group" display_value="Network" endquery="false" field="assignment_group" goto="false" newquery="false" operator="=" or="false" value="287ebd7da9fe198100f92cc8d1d2154e"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">assignment_group!=287ebd7da9fe198100f92cc8d1d2154e^ORincident_state=7^EQ<item display_table="sys_user_group" display_value="Network" endquery="false" field="assignment_group" goto="false" newquery="false" operator="!=" or="false" value="287ebd7da9fe198100f92cc8d1d2154e"/><item display_value="Closed" endquery="false" field="incident_state" goto="false" newquery="false" operator="=" or="true" value="7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2016-11-01 12:41:25</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>ba320982d732220035ae23c7ce610347</sys_id><sys_mod_count>11</sys_mod_count><sys_name>Network group resolution</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_ba320982d732220035ae23c7ce610347</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:41</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>OLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=ba320982d732220035ae23c7ce610347"/></record_update>]]></payload>
+<payload_hash>-1824059087</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>710c26a24763c710490f8c64116d438b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e93640100000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>Network group resolution</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>e1a556e2c5af871063882e11d4b3a85b</update_guid>
+<update_guid_history>e1a556e2c5af871063882e11d4b3a85b:-1824059087,e9a556e292af8710e8af4412bfac674b:-369753296</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_choice_incident_subcategory</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_choice action="INSERT_OR_UPDATE" field="subcategory" table="incident" version="3"><sys_choice_set action="INSERT_OR_UPDATE"><element>subcategory</element><name>incident</name><sys_class_name>sys_choice_set</sys_class_name><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_id>3ce4363b8c5503100a22deb6dd2b4ec1</sys_id><sys_mod_count>0</sys_mod_count><sys_name>subcategory</sys_name><sys_package display_value="Incident" source="com.snc.incident">ace4b23b8c5503100a22deb6dd2b4ed0</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_choice_incident_subcategory</sys_update_name><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on></sys_choice_set><sys_choice action="INSERT_OR_UPDATE"><dependent_value>inquiry</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Antivirus</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>f0e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>antivirus</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>hardware</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>CPU</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>38e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>cpu</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>database</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>DB2</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>f0e4363b8c5503100a22deb6dd2b4ec1</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>db2</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>network</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>DHCP</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>30e4363b8c5503100a22deb6dd2b4ec1</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>dhcp</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>hardware</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Disk</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>b8e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>disk</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>network</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>DNS</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>b0e4363b8c5503100a22deb6dd2b4ec1</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>dns</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>inquiry</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Email</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>34e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>email</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>software</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Email</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>f4e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>email</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>inquiry</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Internal Application</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>74e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>internal application</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>network</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>IP Address</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>70e4363b8c5503100a22deb6dd2b4ec1</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>ip address</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>hardware</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Keyboard</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>3ce4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>keyboard</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>hardware</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Memory</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>78e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>memory</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>hardware</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Monitor</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>f8e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>monitor</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>hardware</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Mouse</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>7ce4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>mouse</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>database</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Oracle</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>34e4363b8c5503100a22deb6dd2b4ec1</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>oracle</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>software</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Operating System</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>b4e4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>os</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>database</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>MS SQL Server</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>74e4363b8c5503100a22deb6dd2b4ec1</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>sql server</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>network</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>VPN</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>bce4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>vpn</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>network</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>Wireless</label><language>en</language><name>incident</name><sequence/><synonyms/><sys_created_by>system</sys_created_by><sys_created_on>2026-06-12 21:18:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>fce4363b8c5503100a22deb6dd2b4ec0</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2026-06-12 21:18:18</sys_updated_on><value>wireless</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>software</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>ERP / SAP</label><language>en</language><name>incident</name><sequence>10</sequence><synonyms/><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:13:01</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>eb265a2247af8710490f8c64116d4341</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:15:14</sys_updated_on><value>erp</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value>software</dependent_value><element>subcategory</element><hint/><inactive>false</inactive><label>MES / Shop floor</label><language>en</language><name>incident</name><sequence>11</sequence><synonyms/><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:13:38</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>ec561a6247af8710490f8c64116d4355</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:13:38</sys_updated_on><value>mes</value></sys_choice></sys_choice></record_update>]]></payload>
+<payload_hash>1688736972</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>750c26a24763c710490f8c64116d438c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e93a6b120000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>Incident.Subcategory</target_name>
+<type>Choice list</type>
+<update_domain>global</update_domain>
+<update_guid>88b61a6609af8710a74507dc8fcf4cfd</update_guid>
+<update_guid_history>88b61a6609af8710a74507dc8fcf4cfd:1688736972,96a61a66b0af87100512274300624d21:-1707662526,e0561e26b8af8710556824d4415dfe98:-1403296233,7f26d62643af8710e07d13c38c12c5b7:-1727057233,812696268aaf8710c311fc2386213c4c:-388106524,0126962668af8710232284c210d7ec37:823444047</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_a864d62247af8710490f8c64116d433b</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 04:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P3 response (4 bh)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="NGI Business Hours - Europe/Paris">032c0aae472f8710490f8c64116d430c</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=3^EQ<item display_value="3 - Moderate" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state!=1^EQ<item display_value="New" endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:05:10</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>a864d62247af8710490f8c64116d433b</sys_id><sys_mod_count>2</sys_mod_count><sys_name>NGI P3 response (4 bh)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_a864d62247af8710490f8c64116d433b</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:33:59</sys_updated_on><target>response</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=a864d62247af8710490f8c64116d433b"/></record_update>]]></payload>
+<payload_hash>-1189426693</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>7d0c26a24763c710490f8c64116d4389</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b97170000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P3 response (4 bh)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>7afa9aaeeeaf8710cdaf1e715ed76de8</update_guid>
+<update_guid_history>7afa9aaeeeaf8710cdaf1e715ed76de8:-1189426693,971a5e2e95af8710c41a9df99393c18e:-1854073156,7c645a22e5af8710823b4f61222c720b:-1189426693</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_35420982d732220035ae23c7ce610393</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 01:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="SLA notification and escalation flow">0335e63573333300e289235f04f6a70f</flow><name>Priority 1 resolution (1 hour)</name><pause_condition table="incident">incident_stateIN3^hold_reason=1^NQincident_state=6^EQ<item display_value="On Hold" endquery="false" field="incident_state" goto="false" newquery="false" operator="IN" or="false" value="3"/><item display_value="Awaiting Caller" endquery="false" field="hold_reason" goto="false" newquery="false" operator="=" or="false" value="1"/><item display_value="Resolved" endquery="false" field="incident_state" goto="false" newquery="true" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>no_schedule</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=1^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="1 - Critical" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">incident_state=7^EQ<item display_value="Closed" endquery="false" field="incident_state" goto="false" newquery="false" operator="=" or="false" value="7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2016-11-01 12:41:38</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>35420982d732220035ae23c7ce610393</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Priority 1 resolution (1 hour)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_35420982d732220035ae23c7ce610393</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:40</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=35420982d732220035ae23c7ce610393"/></record_update>]]></payload>
+<payload_hash>-556545223</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>a50c26a24763c710490f8c64116d4386</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363ac90000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 1 resolution (1 hour)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>c1a516e2a9af871060e863409e978f8d</update_guid>
+<update_guid_history>c1a516e2a9af871060e863409e978f8d:-556545223,81a516e22baf8710e06ee75513aeac8a:-1071875750</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_3bf1d6ea476f8710490f8c64116d4306</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 00:15:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P1 response (15 min)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=1^EQ<item display_value="1 - Critical" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state!=1^EQ<item display_value="New" endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 17:58:17</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>3bf1d6ea476f8710490f8c64116d4306</sys_id><sys_mod_count>3</sys_mod_count><sys_name>NGI P1 response (15 min)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_3bf1d6ea476f8710490f8c64116d4306</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:33:58</sys_updated_on><target>response</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=3bf1d6ea476f8710490f8c64116d4306"/></record_update>]]></payload>
+<payload_hash>434857643</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>a90c26a24763c710490f8c64116d4387</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b913f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P1 response (15 min)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>2efa92aeafaf87107f42b83e2b395e96</update_guid>
+<update_guid_history>2efa92aeafaf87107f42b83e2b395e96:434857643,d21a1e2e31af8710b0eca09f544cc9ce:172961388,f48356ae3a6f87101dd2429b27d1d7e7:434857643,33c2926ea26f8710ed6c3a6a4dd44447:947498237</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_af420982d732220035ae23c7ce6103f3</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 08:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="SLA notification and escalation flow">0335e63573333300e289235f04f6a70f</flow><name>Priority 2 resolution (8 hour)</name><pause_condition table="incident">incident_stateIN3^hold_reason=1^NQincident_state=6^EQ<item display_value="On Hold" endquery="false" field="incident_state" goto="false" newquery="false" operator="IN" or="false" value="3"/><item display_value="Awaiting Caller" endquery="false" field="hold_reason" goto="false" newquery="false" operator="=" or="false" value="1"/><item display_value="Resolved" endquery="false" field="incident_state" goto="false" newquery="true" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="8-5 weekdays">08fcd0830a0a0b2600079f56b1adb9ae</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=2^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="2 - High" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="2"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">incident_state=7^EQ<item display_value="Closed" endquery="false" field="incident_state" goto="false" newquery="false" operator="=" or="false" value="7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2016-11-01 12:41:45</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>af420982d732220035ae23c7ce6103f3</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Priority 2 resolution (8 hour)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_af420982d732220035ae23c7ce6103f3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:41</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=af420982d732220035ae23c7ce6103f3"/></record_update>]]></payload>
+<payload_hash>1788172320</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>b10c26a24763c710490f8c64116d438a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363e970000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 2 resolution (8 hour)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>19a556e2fcaf87106b6842a1243b7939</update_guid>
+<update_guid_history>19a556e2fcaf87106b6842a1243b7939:1788172320,d5a556e28caf871098c80ed977043c36:-229269119</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_c524d6ee476f8710490f8c64116d4394</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 08:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P2 resolution (8 bh)</name><pause_condition table="incident">state=3^EQ<item display_value="On Hold" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="NGI Business Hours - Europe/Paris">032c0aae472f8710490f8c64116d430c</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=2^EQ<item display_value="2 - High" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="2"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state=6^EQ<item display_value="Resolved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:04:06</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>c524d6ee476f8710490f8c64116d4394</sys_id><sys_mod_count>3</sys_mod_count><sys_name>NGI P2 resolution (8 bh)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_c524d6ee476f8710490f8c64116d4394</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:33:59</sys_updated_on><target>resolution</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=c524d6ee476f8710490f8c64116d4394"/></record_update>]]></payload>
+<payload_hash>190737240</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>b50c26a24763c710490f8c64116d438b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b95200000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P2 resolution (8 bh)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>b6fa9aae36af87105f3b606e8a20dbe1</update_guid>
+<update_guid_history>b6fa9aae36af87105f3b606e8a20dbe1:190737240,e71a5e2efaaf87108ba4fc0794b1d495:-2837927,59285e66fcaf87106ce0876416ba6283:190737240,c524d6ee7e6f8710987898b5c575e398:-1768981949</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_752bcf74c3143200b6dcdfdc64d3aeeb</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 01:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>Priority 2 response (1 hour)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="8-5 weekdays">08fcd0830a0a0b2600079f56b1adb9ae</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=2^assignment_groupISNOTEMPTY^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="2 - High" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="2"/><item endquery="false" field="assignment_group" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">incident_state!=1^assigned_toISNOTEMPTY^EQ<item display_value="New" endquery="false" field="incident_state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="false" field="assigned_to" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2017-01-11 15:01:25</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>752bcf74c3143200b6dcdfdc64d3aeeb</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Priority 2 response (1 hour)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_752bcf74c3143200b6dcdfdc64d3aeeb</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:40</sys_updated_on><target>response</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=752bcf74c3143200b6dcdfdc64d3aeeb"/></record_update>]]></payload>
+<payload_hash>-804616195</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>bd0c26a24763c710490f8c64116d4388</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363d1a0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 2 response (1 hour)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>51a556e2d2af8710335aae71c27c8326</update_guid>
+<update_guid_history>51a556e2d2af8710335aae71c27c8326:-804616195,11a556e2c8af8710152906c20d689223:972424990</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_35c213b4c3143200b6dcdfdc64d3ae21</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 04:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>Priority 3 response (4 hours)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="8-5 weekdays">08fcd0830a0a0b2600079f56b1adb9ae</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=3^assignment_groupISNOTEMPTY^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="3 - Moderate" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="false" field="assignment_group" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">incident_state!=1^assigned_toISNOTEMPTY^EQ<item display_value="New" endquery="false" field="incident_state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="false" field="assigned_to" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2017-01-11 15:34:44</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>35c213b4c3143200b6dcdfdc64d3ae21</sys_id><sys_mod_count>4</sys_mod_count><sys_name>Priority 3 response (4 hours)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_35c213b4c3143200b6dcdfdc64d3ae21</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:40</sys_updated_on><target>response</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=35c213b4c3143200b6dcdfdc64d3ae21"/></record_update>]]></payload>
+<payload_hash>-817057834</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>e90c26a24763c710490f8c64116d4386</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363b610000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 3 response (4 hours)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>d9a556e233af8710e4eea980eb923810</update_guid>
+<update_guid_history>d9a556e233af8710e4eea980eb923810:-817057834,05a516e291af87100ae847fdc8229091:-435514825</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Service Level Management - ATF">65b48e35b76233004fbc2089ee11a99a</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_540a4606b7e233004fbc2089ee11a919</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type>none</adv_condition_type><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-01 01:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>ATF - test start/pause/stop conditions</name><pause_condition table="incident">state=3^EQ<item display_value="On Hold" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>complete</reset_action><reset_condition table="incident">assigned_to=babb4639b76233004fbc2089ee11a97f^EQ<item display_table="sys_user" display_value="ATF Service Level Management" endquery="false" field="assigned_to" goto="false" newquery="false" operator="=" or="false" value="babb4639b76233004fbc2089ee11a97f"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></reset_condition><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule/><schedule_source>no_schedule</schedule_source><schedule_source_field/><set_start_to>work_end</set_start_to><start_condition table="incident">active=true^short_descriptionSTARTSWITHATF SLA Incident^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item endquery="false" field="short_description" goto="false" newquery="false" operator="STARTSWITH" or="false" value="ATF SLA Incident"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state=6^EQ<item display_value="Resolved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2019-07-11 12:36:15</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>540a4606b7e233004fbc2089ee11a919</sys_id><sys_mod_count>6</sys_mod_count><sys_name>ATF - test start/pause/stop conditions</sys_name><sys_overrides/><sys_package display_value="Service Level Management - ATF" source="sn_slm_atf">65b48e35b76233004fbc2089ee11a99a</sys_package><sys_policy/><sys_scope display_value="Service Level Management - ATF">65b48e35b76233004fbc2089ee11a99a</sys_scope><sys_update_name>contract_sla_540a4606b7e233004fbc2089ee11a919</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:30:08</sys_updated_on><target>response</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=540a4606b7e233004fbc2089ee11a919"/></record_update>]]></payload>
+<payload_hash>-1998979195</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:27</sys_created_on>
+<sys_id>ed0c26a24763c710490f8c64116d4387</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e948109f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:27</sys_updated_on>
+<table>incident</table>
+<target_name>ATF - test start/pause/stop conditions</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>ee1a5e2ed4af8710fe2992a546b25514</update_guid>
+<update_guid_history>ee1a5e2ed4af8710fe2992a546b25514:-1998979195,9a1a1e2e62af8710d398cb0f17c75cd2:703083424</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_97d35aae476f8710490f8c64116d43d3</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>true</active><adv_condition_type>none</adv_condition_type><cancel_condition table="incident">state=8^EQ<item display_value="Canceled" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="8"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></cancel_condition><collection>incident</collection><condition_class/><duration>1970-01-01 01:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="Default SLA flow">828f267973333300e289235f04f6a7a3</flow><name>NGI P2 response (1 h)</name><pause_condition/><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>false</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="NGI Business Hours - Europe/Paris">032c0aae472f8710490f8c64116d430c</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to/><start_condition table="incident">priority=2^EQ<item display_value="2 - High" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="2"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">state!=1^EQ<item display_value="New" endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="1"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 18:02:54</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>97d35aae476f8710490f8c64116d43d3</sys_id><sys_mod_count>2</sys_mod_count><sys_name>NGI P2 response (1 h)</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_97d35aae476f8710490f8c64116d43d3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:33:59</sys_updated_on><target>response</target><timezone>Europe/Paris</timezone><timezone_source>sla.timezone</timezone_source><type>SLA</type><vendor/><when_to_cancel>on_condition</when_to_cancel><when_to_resume>on_condition</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=97d35aae476f8710490f8c64116d43d3"/></record_update>]]></payload>
+<payload_hash>-293226678</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>f10c26a24763c710490f8c64116d4389</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e94b94310000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>NGI P2 response (1 h)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>3efa9aaefaaf8710ddd538c47fd091cd</update_guid>
+<update_guid_history>3efa9aaefaaf8710ddd538c47fd091cd:-293226678,871a5e2e0caf8710c4fab56aff910667:-1630738229,a7d35aaed66f8710d3245d6b81c130d7:-293226678</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_b12a37e0d7322200f2d224837e6103ea</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-03 00:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="SLA notification and escalation flow">0335e63573333300e289235f04f6a70f</flow><name>Priority 4 resolution (2 day)</name><pause_condition table="incident">incident_stateIN3^hold_reason=1^NQincident_state=6^EQ<item display_value="On Hold" endquery="false" field="incident_state" goto="false" newquery="false" operator="IN" or="false" value="3"/><item display_value="Awaiting Caller" endquery="false" field="hold_reason" goto="false" newquery="false" operator="=" or="false" value="1"/><item display_value="Resolved" endquery="false" field="incident_state" goto="false" newquery="true" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="8-5 weekdays">08fcd0830a0a0b2600079f56b1adb9ae</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=4^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="4 - Low" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="4"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">incident_state=7^EQ<item display_value="Closed" endquery="false" field="incident_state" goto="false" newquery="false" operator="=" or="false" value="7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2016-10-28 10:14:06</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>b12a37e0d7322200f2d224837e6103ea</sys_id><sys_mod_count>4</sys_mod_count><sys_name>Priority 4 resolution (2 day)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_b12a37e0d7322200f2d224837e6103ea</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:41</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=b12a37e0d7322200f2d224837e6103ea"/></record_update>]]></payload>
+<payload_hash>-802796568</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>f50c26a24763c710490f8c64116d438a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e9363f200000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 4 resolution (2 day)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>19a556e2e4af87109d45d7cd3d95cf40</update_guid>
+<update_guid_history>19a556e2e4af87109d45d7cd3d95cf40:-802796568,d5a556e218af8710e81ca27a6330d83d:898917927</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>contract_sla_d1524982d732220035ae23c7ce61035d</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="contract_sla"><contract_sla action="INSERT_OR_UPDATE"><active>false</active><adv_condition_type/><cancel_condition/><collection>incident</collection><condition_class/><duration>1970-01-02 00:00:00</duration><duration_type/><enable_logging>false</enable_logging><flow display_value="SLA notification and escalation flow">0335e63573333300e289235f04f6a70f</flow><name>Priority 3 resolution (1 day)</name><pause_condition table="incident">incident_stateIN3^hold_reason=1^NQincident_state=6^EQ<item display_value="On Hold" endquery="false" field="incident_state" goto="false" newquery="false" operator="IN" or="false" value="3"/><item display_value="Awaiting Caller" endquery="false" field="hold_reason" goto="false" newquery="false" operator="=" or="false" value="1"/><item display_value="Resolved" endquery="false" field="incident_state" goto="false" newquery="true" operator="=" or="false" value="6"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></pause_condition><relative_duration_works_on>Task record</relative_duration_works_on><reset_action>cancel</reset_action><reset_condition/><resume_condition/><retroactive>true</retroactive><retroactive_pause>true</retroactive_pause><schedule display_value="8-5 weekdays">08fcd0830a0a0b2600079f56b1adb9ae</schedule><schedule_source>sla_definition</schedule_source><schedule_source_field/><set_start_to>sys_created_on</set_start_to><start_condition table="incident">active=true^priority=3^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/><item display_value="3 - Moderate" endquery="false" field="priority" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></start_condition><stop_condition table="incident">incident_state=7^EQ<item display_value="Closed" endquery="false" field="incident_state" goto="false" newquery="false" operator="=" or="false" value="7"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></stop_condition><sys_class_name>contract_sla</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2016-11-01 12:41:52</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>d1524982d732220035ae23c7ce61035d</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Priority 3 resolution (1 day)</sys_name><sys_overrides/><sys_package display_value="Service Level Management Best Practice - Jakarta" source="com.snc.best_practice.sla.jakarta">95783ab78c5903100a22deb6dd2b4e66</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>contract_sla_d1524982d732220035ae23c7ce61035d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 18:10:41</sys_updated_on><target>resolution</target><timezone/><timezone_source>task.caller_id.time_zone</timezone_source><type>SLA</type><vendor/><when_to_cancel>no_match</when_to_cancel><when_to_resume>no_match</when_to_resume><workflow/></contract_sla><sys_translated_text action="delete_multiple" query="documentkey=d1524982d732220035ae23c7ce61035d"/></record_update>]]></payload>
+<payload_hash>-911077179</payload_hash>
+<remote_update_set display_value="NGI-P0-02-sla-config">290c26a24763c710490f8c64116d4384</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-28 19:48:28</sys_created_on>
+<sys_id>f90c26a24763c710490f8c64116d438b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e93640760000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-28 19:48:28</sys_updated_on>
+<table>incident</table>
+<target_name>Priority 3 resolution (1 day)</target_name>
+<type>SLA Definition</type>
+<update_domain>global</update_domain>
+<update_guid>e1a556e241af8710e7394b89b3890d62</update_guid>
+<update_guid_history>e1a556e241af8710e7394b89b3890d62:-911077179,a1a556e2ecaf8710a0a5ba68c3e0105f:1652917734</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
 </unload>
