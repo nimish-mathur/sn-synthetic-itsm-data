@@ -70,8 +70,8 @@ class Lifecycle:
 
     def _route(self, r: np.random.Generator, draft: IncidentDraft) -> tuple[str, int]:
         day = draft.opened_local.date()
-        if draft.story == "erp_wave":
-            return self.cfg["story_events"]["erp_failed_change"]["implementing_group"], 1
+        if draft.forced_group:                              # story incidents (ERP wave, change-induced)
+            return draft.forced_group, 1
         dq = self.cfg["data_quality_defects"]
         if dq["enabled"] and day < dq["retired_group"]["only_before"] and r.random() < dq["retired_group"]["rate"]:
             return dq["retired_group"]["name"], int(_pick(r, self.inc["reassignments_when_escalated"]))

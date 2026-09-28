@@ -1,7 +1,8 @@
 """Command line.
 
     python -m sn_synth reference   -> reference data batch files
-    python -m sn_synth incidents   -> incident preview: arrivals + lifecycle (not loadable yet)
+    python -m sn_synth preview     -> full dataset preview: changes, incidents, SLAs (not loadable yet)
+    python -m sn_synth incidents   -> same as preview (kept for compatibility)
 """
 from __future__ import annotations
 
@@ -13,9 +14,9 @@ from .config import DEFAULT_CONFIG, REPO_ROOT, load_config
 from .export import REFERENCE_OPTIONS, write_batches
 from collections import Counter
 
-from .incidents import generate_arrivals, monthly_counts
-from .lifecycle import apply_lifecycle
-from .sla import attainment_by_quarter, build_sla_rows
+from .incidents import monthly_counts
+from .pipeline import generate_all
+from .sla import attainment_by_quarter
 from .reference import build_reference
 
 PREVIEW_FIELDS = ["opened_at", "priority", "category", "subcategory", "short_description",
@@ -25,7 +26,7 @@ STATE_LABELS = {"1": "New", "2": "In Progress", "3": "On Hold", "6": "Resolved",
 
 def main() -> None:
     parser = argparse.ArgumentParser(prog="sn_synth", description="NGI synthetic ITSM data generator")
-    parser.add_argument("command", choices=["reference", "incidents"], help="what to generate")
+    parser.add_argument("command", choices=["reference", "preview", "incidents"], help="what to generate")
     parser.add_argument("--config", default=str(DEFAULT_CONFIG))
     parser.add_argument("--out", default=None, help="output directory (default: output/ in the repo)")
     args = parser.parse_args()
@@ -42,14 +43,16 @@ def main() -> None:
             print(f"  {table:20s} {len(rows):6d}")
         print(f"{len(files)} batch files + manifest.json written to {out / 'reference'}")
 
-    elif args.command == "incidents":
-        drafts = apply_lifecycle(cfg, ref, generate_arrivals(cfg, ref))
+    else:
+        ds = generate_all(cfg)
+        drafts = ds.incidents
         group_name = {v: k for k, v in ref.group_id_by_name.items()}
         print(f"History window: {cfg['time']['start_date']} to {cfg['time']['end_date']} (exclusive)")
         print("Incidents opened per month:")
         for month, n in monthly_counts(drafts).items():
             print(f"  {month}  {n:5d}  {'#' * (n // 50)}")
-        print(f"Total: {len(drafts)}  (of which ERP wave: {sum(d.story == 'erp_wave' for d in drafts)})")
+        print(f"Total: {len(drafts)}  (ERP wave: {sum(d.story == 'erp_wave' for d in drafts)}, "
+              f"change-induced: {sum(d.story == 'change_induced' for d in drafts)})")
         states = Counter(d.record["state"] for d in drafts)
         print("State at history cut-off: " + ", ".join(f"{STATE_LABELS[k]} {v}" for k, v in sorted(states.items())))
         preview = out / "preview"
@@ -66,7 +69,7 @@ def main() -> None:
                            [d.record.get(k, "") for k in PREVIEW_FIELDS])
         print(f"Preview written to {path}")
 
-        sla_rows = build_sla_rows(cfg, drafts)
+        sla_rows = ds.sla_rows
         print(f"SLA records: {len(sla_rows)}")
         print("SLA attainment by quarter of completion (response | resolution):")
         response, resolution = attainment_by_quarter(sla_rows, "response"), attainment_by_quarter(sla_rows, "resolution")
@@ -81,6 +84,20 @@ def main() -> None:
             for r in sla_rows:
                 w.writerow([r.get(k, "") for k in fields])
         print(f"SLA preview written to {sla_path}")
+
+        changes = ds.changes
+        closed = [c for c in changes if c.record["state"] == "3"]
+        ok = sum(c.close_code != "unsuccessful" for c in closed)
+        print(f"Changes: {len(changes)}  types: " + ", ".join(f"{t} {n}" for t, n in Counter(c.type for c in changes).items()))
+        print(f"Change success rate (closed, incl. 'successful with issues'): {ok / len(closed):.1%}")
+        chg_path = preview / "changes.csv"
+        with chg_path.open("w", newline="", encoding="utf-8-sig") as f:
+            w = csv.writer(f)
+            w.writerow(["type", "group", "start_local", "state", "close_code", "short_description"])
+            for c in changes:
+                w.writerow([c.type, c.group, c.start_local.strftime("%Y-%m-%d %H:%M"), c.record["state"],
+                            c.record.get("close_code", ""), c.record["short_description"]])
+        print(f"Change preview written to {chg_path}")
 
 
 if __name__ == "__main__":

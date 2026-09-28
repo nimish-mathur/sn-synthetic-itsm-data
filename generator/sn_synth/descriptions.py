@@ -39,3 +39,24 @@ CLOSE_NOTES: dict[str, list[str]] = {
     "Duplicate": ["Duplicate of an existing incident."],
     "No resolution provided": ["Closed without resolution details."],
 }
+
+CHANGE_TEMPLATES: dict[str, list[str]] = {
+    "NGI Infrastructure Engineering": ["Monthly Windows server patching - {site}", "Replace failed disk array controller",
+                                       "Extend storage volume on file server", "VMware host firmware update"],
+    "NGI Network Operations": ["Firewall rule update for supplier VPN", "Core switch firmware upgrade - {site}",
+                               "Wi-Fi access point replacement - {site} plant", "WAN link bandwidth increase - {site}"],
+    "NGI Database Administration": ["Apply SQL Server cumulative update", "Oracle index rebuild on MES database",
+                                    "Database backup schedule change", "Migrate reporting database to new host"],
+    "NGI SAP ERP Support": ["SAP transport release to production", "SAP user role adjustment for plant controllers",
+                            "Update SAP output management settings", "SAP kernel patch"],
+    "NGI Application Support": ["Deploy new release of quality portal", "Update email security policy",
+                                "Upgrade PLM client on engineering workstations", "Renew application certificates"],
+    "NGI Plant OT Support": ["MES software update on line {site}", "PLC gateway configuration change - {site}",
+                             "Replace shop-floor terminal fleet - {site}", "Update label printer drivers - {site}"],
+}
+
+CHANGE_CLOSE_NOTES: dict[str, list[str]] = {
+    "successful": ["Implemented as planned; post-implementation checks passed."],
+    "successful_issues": ["Implemented with minor issues; resolved during the window."],
+    "unsuccessful": ["Implementation failed; rolled back to previous state."],
+}

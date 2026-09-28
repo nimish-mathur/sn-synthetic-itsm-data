@@ -168,10 +168,22 @@ changes:
     - "NGI SAP ERP Support"
     - "NGI Application Support"
     - "NGI Plant OT Support"
+  cancel_rate: 0.03
+  review_days: {standard: 0, normal: 2, emergency: 1}   # Review state before closure
+  assess_days_normal: 3             # recently opened normal changes still in Assess
+  scheduled_horizon_days: 14        # changes already planned beyond the load date
   induced_incidents:                # incident.caused_by -> change
     probability_if_unsuccessful: 0.30
     incidents_per_event: [1, 4]
     window_hours: 48
+    priority_mix: {1: 0.05, 2: 0.25, 3: 0.50, 4: 0.20}
+    category_by_group:
+      "NGI Infrastructure Engineering": {category: hardware}
+      "NGI Network Operations": {category: network}
+      "NGI Database Administration": {category: database}
+      "NGI SAP ERP Support": {category: software, subcategory: erp}
+      "NGI Application Support": {category: software}
+      "NGI Plant OT Support": {category: software, subcategory: mes}
 
 # --- D4 SLAs ----------------------------------------------------------------
 sla:
@@ -212,6 +224,8 @@ story_events:
     volume_factor: 0.70
   erp_failed_change:
     change_start_local: "2026-03-07 22:00"   # Saturday maintenance window
+    duration_hours: 6
+    short_description: "SAP S/4HANA support package upgrade - weekend maintenance"
     change_type: normal
     close_code: unsuccessful
     implementing_group: "NGI SAP ERP Support"

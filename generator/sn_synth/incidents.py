@@ -26,7 +26,8 @@ class IncidentDraft:
     opened_local: dt.datetime
     site: str
     record: dict[str, Any] = field(default_factory=dict)
-    story: str = ""                     # e.g. "erp_wave"
+    story: str = ""                     # e.g. "erp_wave", "change_induced"
+    forced_group: str = ""              # story incidents go straight to this group
     timeline: dict[str, Any] = field(default_factory=dict)   # filled by the lifecycle (part 2)
 
 
@@ -120,6 +121,30 @@ class _AttributePicker:
         return text.format(sub=SUBCATEGORY_LABELS.get(subcategory, subcategory), site=self.site_names[site])
 
 
+def _build(pick: _AttributePicker, ref: ReferenceData, r: np.random.Generator, opened: dt.datetime, key: str,
+           prio_mix: dict, tag: str, story: str = "", category: str | None = None, subcategory: str | None = None,
+           description: str | None = None, extra: dict | None = None, forced_group: str = "") -> IncidentDraft:
+    caller = pick.caller(r)
+    site = pick.site_of[caller]
+    cat = pick.category(r, opened.date()) if category is None else category
+    sub = pick.subcategory(r, cat) if subcategory is None else subcategory
+    impact, urgency, prio = pick.priority(r, prio_mix)
+    rec = {
+        "sys_id": sys_id("incident", key),
+        "opened_at": to_sn(opened),
+        "caller_id": caller,
+        "location": ref.location_by_site[site],
+        "company": ref.company_id,
+        "category": cat,
+        "subcategory": sub,
+        "impact": impact, "urgency": urgency, "priority": prio,
+        "short_description": description or pick.description(r, cat, sub, site),
+        "correlation_id": tag,
+        **(extra or {}),
+    }
+    return IncidentDraft(key=key, opened_local=opened, site=site, record=rec, story=story, forced_group=forced_group)
+
+
 def generate_arrivals(cfg: dict, ref: ReferenceData) -> list[IncidentDraft]:
     """All incidents opened from start_date up to (not including) end_date, sorted by open time."""
     cal = NGICalendar(cfg)
@@ -128,27 +153,9 @@ def generate_arrivals(cfg: dict, ref: ReferenceData) -> list[IncidentDraft]:
     base_daily = cfg["incidents"]["monthly_volume"] * 12 / 365
     drafts: list[IncidentDraft] = []
 
-    def make(r, day, key, prio_mix, story="", category=None, subcategory=None, description=None, extra=None):
+    def make(r, day, key, prio_mix, **kwargs):
         opened = _open_time(r, cfg, cal, day)
-        caller = pick.caller(r)
-        site = pick.site_of[caller]
-        cat = pick.category(r, day) if category is None else category
-        sub = pick.subcategory(r, cat) if subcategory is None else subcategory
-        impact, urgency, prio = pick.priority(r, prio_mix)
-        rec = {
-            "sys_id": sys_id("incident", key),
-            "opened_at": to_sn(opened),
-            "caller_id": caller,
-            "location": ref.location_by_site[site],
-            "company": ref.company_id,
-            "category": cat,
-            "subcategory": sub,
-            "impact": impact, "urgency": urgency, "priority": prio,
-            "short_description": description or pick.description(r, cat, sub, site),
-            "correlation_id": tag,
-            **(extra or {}),
-        }
-        drafts.append(IncidentDraft(key=key, opened_local=opened, site=site, record=rec, story=story))
+        drafts.append(_build(pick, ref, r, opened, key, prio_mix, tag, **kwargs))
 
     # Base volume
     r = rng(cfg["meta"]["seed"], "incidents.arrivals")
@@ -174,7 +181,7 @@ def generate_arrivals(cfg: dict, ref: ReferenceData) -> list[IncidentDraft]:
                 make(rw, wave_day, f"{wave_day:%Y%m%d}-w{k:03d}", ev["priority_mix"], story="erp_wave",
                      category=ev["category"], subcategory=sub,
                      description=ERP_WAVE_TEMPLATES[rw.integers(len(ERP_WAVE_TEMPLATES))],
-                     extra={"caused_by": change_id})
+                     extra={"caused_by": change_id}, forced_group=ev["implementing_group"])
 
     drafts.sort(key=lambda d: (d.opened_local, d.key))   # load order = number order = time order
     return drafts
@@ -186,3 +193,24 @@ def monthly_counts(drafts: list[IncidentDraft]) -> dict[str, int]:
         month = d.opened_local.strftime("%Y-%m")
         counts[month] = counts.get(month, 0) + 1
     return counts
+
+
+def generate_induced(cfg: dict, ref: ReferenceData, specs: list[dict]) -> list[IncidentDraft]:
+    """Incidents caused by unsuccessful changes (incident.caused_by -> change)."""
+    pick = _AttributePicker(cfg, ref)
+    tag = cfg["meta"]["load_tag_prefix"] + "INC-01"
+    ind = cfg["changes"]["induced_incidents"]
+    r = rng(cfg["meta"]["seed"], "incidents.change_induced")
+    cutoff = NGICalendar(cfg).local(cfg["time"]["end_date"], 0)
+    drafts = []
+    for spec in specs:
+        mapping = ind["category_by_group"][spec["group"]]
+        for k in range(spec["count"]):
+            opened = spec["after"] + dt.timedelta(seconds=round(r.uniform(0, ind["window_hours"] * 3600)))
+            if opened >= cutoff:
+                continue
+            drafts.append(_build(pick, ref, r, opened, f"{spec['change_key']}-i{k}", ind["priority_mix"], tag,
+                                 story="change_induced", category=mapping["category"],
+                                 subcategory=mapping.get("subcategory"),
+                                 extra={"caused_by": spec["change_id"]}, forced_group=spec["group"]))
+    return drafts

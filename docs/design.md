@@ -115,17 +115,27 @@ Durations use ServiceNow's duration format (offset from 1970-01-01). SLA definit
 
 **Resulting attainment (run of 2026-09-27):** response ≈ 90 % throughout; resolution ≈ 78 % in 2025-Q3 rising to ≈ 86 % in 2026-Q3.
 
-## 11. Rollback
+## 11. Changes (generator part 4)
+- **Volume and types:** ~180 per month; 55 % standard, 40 % normal, 5 % emergency.
+- **Windows:** standard and normal changes run on weekday evenings (18:00–22:00 Paris) or, for 35 %, at weekends; emergency changes run at any time. Planned up to 14 days beyond the load date, so the instance shows a forward schedule.
+- **Lead time:** opened ~2 days (standard) or ~10 days (normal) before start; emergency the same day.
+- **State at cut-off:** Closed (with `close_code` and `close_notes`) after a review period of 0 / 2 / 1 days; Review, Implement, Assess or Scheduled otherwise; 3 % cancelled.
+- **Success:** failure rates of 1 % / 4 % / 10 % by type give a change success rate of ~97 % (counting "successful with issues" as success).
+- **The failed ERP change (D7b):** normal change by SAP ERP Support, Saturday 7 March 2026 22:00 Paris, 6 h, `unsuccessful`. Its sys_id is derived from a fixed key, so the 220 wave incidents already point to it.
+- **Change-induced incidents:** 30 % of other failed changes cause 1–4 incidents within 48 h, routed to the implementing group, with `caused_by` set.
+- **Order of generation:** changes are generated first, because their failures create incidents (`pipeline.py`).
+
+## 12. Rollback
 `task_sla` and reference tables have no `correlation_id`. Every run therefore writes `manifest.json` (sys_ids per table). Rollback deletes by that manifest, never by broad queries.
 
-## 12. Known limitations
+## 13. Known limitations
 - No audit, journal or metric history: the activity stream is empty on historic records.
 - Only the final assignment group is stored; intermediate groups of reassigned incidents are not.
 - SLA rows are computed by the generator, not by the SLA engine. `percentage` / `time_left` follow a documented approximation; analytics use `has_breached`, `business_percentage` and `business_duration`.
 - Historic breakdowns reflect current values (for example, the final assignment group).
 - The escalation routing placeholder `<region>` resolves to the caller site's Workplace Support group.
-- Changes carry no change model (`chg_model`); the Brazil `model` change type is not used.
+- Changes carry no change model (`chg_model`), risk, CI or approval records; the Brazil `model` change type is not used.
 - Incident close codes are case-sensitive values with spaces (e.g. `Solution provided`), used exactly as on the instance.
 
-## 13. Instance facts
+## 14. Instance facts
 Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.
