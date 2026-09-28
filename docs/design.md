@@ -88,16 +88,26 @@ Created 30 days before the history window, so no ticket predates its caller or g
 - **ERP wave (D7b):** 220 extra incidents, 9–13 March 2026, category `software` / subcategory `erp`, each with `caused_by` pointing to the failed change. The change's sys_id is derived from a fixed key, so the change module will create exactly that record.
 - **Independent random streams:** base volume and the ERP wave use separate streams; switching the event off does not reshuffle the base data.
 
-## 9. Rollback
+## 9. Incident lifecycle (generator part 2)
+- **Routing:** first-contact resolution by the Service Desk with a category-dependent chance (password resets high, database low; P1s rarely), 60 % overall, rising to 68 % (D7c). Otherwise escalated with 1–3 reassignments to the group for the category (hardware → the caller's regional Workplace Support; `erp` → SAP ERP Support; `mes` → Plant OT).
+- **Durations** are drawn in the SLA clock of the priority: P1 in real time (24×7), P2–P4 in NGI business hours (Mon–Fri 08:00–18:00 Paris, French holidays excluded). Resolution effort shrinks linearly to 75 % between January and July 2026 (D7c).
+- **Exceptions:** 8 % go on hold (median 16 h, adds real time); 4 % reopen after 1–3 days; 2 % are cancelled; 1.5 % wait 30–90 days on a vendor.
+- **State at cut-off** (00:00 Paris on load day): Closed if resolved ≥ 7 days earlier (auto-close), Resolved if more recent, otherwise New / In Progress / On Hold, with a share of open tickets untouched for more than 5 days.
+- **Closure fields:** every Resolved/Closed incident has `close_code` (instance values, configured mix) and `close_notes`: the data policy found in T7.
+- **Resolve times:** `calendar_stc` (real seconds) and `business_stc` (business seconds) computed from the stored, whole-second timestamps.
+- **Resulting SLA picture (before hold pauses, run of 2026-09-27):** resolution targets missed by ~27 % of incidents in H2 2025, ~18 % in Q3 2026: a governance story, not a perfect service.
+
+## 10. Rollback
 `task_sla` and reference tables have no `correlation_id`. Every run therefore writes `manifest.json` (sys_ids per table). Rollback deletes by that manifest, never by broad queries.
 
-## 10. Known limitations
+## 11. Known limitations
 - No audit, journal or metric history: the activity stream is empty on historic records.
+- Only the final assignment group is stored; intermediate groups of reassigned incidents are not.
 - SLA rows are computed by the generator, not by the SLA engine.
 - Historic breakdowns reflect current values (for example, the final assignment group).
 - The escalation routing placeholder `<region>` resolves to the caller site's Workplace Support group.
 - Changes carry no change model (`chg_model`); the Brazil `model` change type is not used.
 - Incident close codes are case-sensitive values with spaces (e.g. `Solution provided`), used exactly as on the instance.
 
-## 11. Instance facts
+## 12. Instance facts
 Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.

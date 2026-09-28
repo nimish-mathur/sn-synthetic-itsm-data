@@ -27,6 +27,7 @@ class IncidentDraft:
     site: str
     record: dict[str, Any] = field(default_factory=dict)
     story: str = ""                     # e.g. "erp_wave"
+    timeline: dict[str, Any] = field(default_factory=dict)   # filled by the lifecycle (part 2)
 
 
 def _pick(r: np.random.Generator, weights: dict[Any, float]) -> Any:

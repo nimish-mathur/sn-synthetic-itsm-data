@@ -98,6 +98,16 @@ incidents:
     password_reset: {"NGI Identity and Access": 1.0}
 
   first_contact_resolution_rate: 0.60   # resolved by Service Desk, reassignment_count = 0
+  fcr_category_weights:             # relative chance of first-contact resolution per category
+    password_reset: 1.5
+    inquiry: 1.3
+    software: 0.9
+    hardware: 0.7
+    network: 0.6
+    database: 0.3
+  p1_fcr_factor: 0.2                # P1s rarely stay with the Service Desk
+  subcategory_routing: {erp: "NGI SAP ERP Support", mes: "NGI Plant OT Support"}
+  routing_fallback: hardware        # routing used for missing / legacy categories
   reassignments_when_escalated: {1: 0.70, 2: 0.22, 3: 0.08}
 
   close_code_mix:                   # values exactly as on the instance (file 16)
@@ -133,8 +143,11 @@ incidents:
 
   on_hold: {rate: 0.08, median_hours: 16, sigma: 0.8}
   reopen_rate: 0.04
+  reopen: {gap_days: [1, 3], extra_business_hours: {median: 4, sigma: 0.8}}
   cancel_rate: 0.02
+  cancel_after_hours: {median: 3, sigma: 1.0}
   long_running_share: 0.015         # vendor-wait tail, resolved after 30–90 days
+  long_running_days: [30, 90]
   stale_open_share: 0.10            # open incidents with no update for > 5 days
 
 # --- Changes ----------------------------------------------------------------

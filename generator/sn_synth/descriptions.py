@@ -26,3 +26,16 @@ SUBCATEGORY_LABELS = {
     "ip address": "IP address", "dns": "DNS", "vpn": "VPN", "wireless": "Wi-Fi", "os": "Windows",
     "erp": "SAP", "mes": "MES", "": "system",
 }
+
+CLOSE_NOTES: dict[str, list[str]] = {
+    "Solution provided": ["Issue fixed and confirmed with the user.", "Configuration corrected; user confirmed service restored."],
+    "Workaround provided": ["Workaround applied; permanent fix tracked separately.", "Temporary workaround given to the user."],
+    "Resolved by caller": ["User reports the issue resolved itself.", "Caller resolved the issue before intervention."],
+    "User error": ["Incorrect usage; user guided through the correct steps."],
+    "Known error": ["Matches a known error; documented workaround applied."],
+    "Resolved by change": ["Resolved by the implementation of a change."],
+    "Resolved by problem": ["Root cause fixed through problem management."],
+    "Resolved by request": ["Fulfilled through a service request."],
+    "Duplicate": ["Duplicate of an existing incident."],
+    "No resolution provided": ["Closed without resolution details."],
+}
