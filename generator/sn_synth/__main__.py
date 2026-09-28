@@ -1,17 +1,19 @@
 """Command line.
 
     python -m sn_synth reference   -> reference data batch files
-    python -m sn_synth preview     -> full dataset preview: changes, incidents, SLAs (not loadable yet)
+    python -m sn_synth export      -> loadable batch files for every table + manifest + ground truth
+    python -m sn_synth preview     -> full dataset preview: changes, incidents, SLAs (CSV for Excel)
     python -m sn_synth incidents   -> same as preview (kept for compatibility)
 """
 from __future__ import annotations
 
 import argparse
 import csv
+import json
 from pathlib import Path
 
 from .config import DEFAULT_CONFIG, REPO_ROOT, load_config
-from .export import REFERENCE_OPTIONS, write_batches
+from .export import REFERENCE_OPTIONS, export_dataset, write_batches
 from collections import Counter
 
 from .incidents import monthly_counts
@@ -26,7 +28,7 @@ STATE_LABELS = {"1": "New", "2": "In Progress", "3": "On Hold", "6": "Resolved",
 
 def main() -> None:
     parser = argparse.ArgumentParser(prog="sn_synth", description="NGI synthetic ITSM data generator")
-    parser.add_argument("command", choices=["reference", "preview", "incidents"], help="what to generate")
+    parser.add_argument("command", choices=["reference", "export", "preview", "incidents"], help="what to generate")
     parser.add_argument("--config", default=str(DEFAULT_CONFIG))
     parser.add_argument("--out", default=None, help="output directory (default: output/ in the repo)")
     args = parser.parse_args()
@@ -42,6 +44,17 @@ def main() -> None:
         for table, rows in ref.tables.items():
             print(f"  {table:20s} {len(rows):6d}")
         print(f"{len(files)} batch files + manifest.json written to {out / 'reference'}")
+
+    elif args.command == "export":
+        ds = generate_all(cfg)
+        files, gt_path = export_dataset(ds, out, cfg["output"]["batch_size"], cfg["meta"]["load_tag_prefix"])
+        per_table = Counter(p.name.split("-", 1)[1].rsplit("-", 1)[0] for p in files)
+        print(f"History window: {cfg['time']['start_date']} to {cfg['time']['end_date']} (exclusive)")
+        for table, n in per_table.items():
+            rows = len(json.loads((out / "load" / "manifest.json").read_text(encoding="utf-8"))["tables"][table])
+            print(f"  {table:20s} {rows:6d} records in {n:3d} batch files")
+        print(f"{len(files)} batch files + manifest.json in {out / 'load'}")
+        print(f"Ground truth: {gt_path}")
 
     else:
         ds = generate_all(cfg)

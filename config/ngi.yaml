@@ -276,7 +276,13 @@ instance_facts:
   change_states: {new: -5, assess: -4, authorize: -3, scheduled: -2, implement: -1, review: 0, closed: 3, canceled: 4}   # file 20
   change_types: [standard, normal, emergency, model]   # file 20 – "model" exists on Brazil, not used
   change_close_codes: [successful, successful_issues, unsuccessful]   # T2
-  task_sla_stages: {in_progress: in_progress, paused: paused, completed: completed, cancelled: cancelled}   # CONFIRM (T8.5 file 25)
+  task_sla_stages: {in_progress: in_progress, paused: paused, completed: completed, cancelled: cancelled}   # file 25
+  # file 25 also lists "achieved" and "breached": not used (breach is carried by has_breached).
+  # Verified against a live engine-created SLA in T9.
+  task_sla_fields: [active, business_duration, business_pause_duration, business_percentage, business_time_left,
+                    duration, end_time, has_breached, original_breach_time, pause_duration, pause_time, percentage,
+                    planned_end_time, schedule, sla, stage, start_time, sys_created_by, sys_created_on, sys_id,
+                    sys_mod_count, sys_updated_by, sys_updated_on, task, timezone, time_left]   # file 24
   mandatory_when_resolved:          # files 21–22: only one active data policy with mandatory rules
     incident: [close_code, close_notes]
     change_request: []

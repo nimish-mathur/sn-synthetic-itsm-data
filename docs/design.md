@@ -125,10 +125,25 @@ Durations use ServiceNow's duration format (offset from 1970-01-01). SLA definit
 - **Change-induced incidents:** 30 % of other failed changes cause 1–4 incidents within 48 h, routed to the implementing group, with `caused_by` set.
 - **Order of generation:** changes are generated first, because their failures create incidents (`pipeline.py`).
 
-## 12. Rollback
+## 12. Export and ground truth
+`python -m sn_synth export` writes `output/load/`: one JSON file per batch of 200 records, in load order, plus `manifest.json`. It also writes `output/ground_truth/counts.json`.
+
+| Order | Table | Load mode |
+|---|---|---|
+| 1–6 | company, locations, departments, users, groups, memberships | dates kept, business rules **on** |
+| 7 | `change_request` | dates kept, business rules **off** |
+| 8 | `incident` (`caused_by` → change) | dates kept, business rules **off** |
+| 9 | `task_sla` (`task` → incident) | dates kept, business rules **off** |
+
+- **Name resolution:** `task_sla` batches carry rules telling the loader to look up the SLA definition (`contract_sla.name`) and schedule (`cmn_schedule.name`) on the instance. Their sys_ids exist only after they are created in ServiceNow (T8.9).
+- **Field check:** every `task_sla` field written exists on the Brazil instance (file 24, tested).
+- **SLA stages:** `in_progress`, `paused`, `completed`, `cancelled`; breach is carried by `has_breached`. The instance also lists `achieved` and `breached`; these are not written. The assumption is verified against a live, engine-created SLA before the full load (T9).
+- **Ground truth (counts only):** records per table; incidents by month, state, priority and category; changes by state, type and close code; SLAs by definition and stage, and breaches. Months are UTC, as stored in ServiceNow.
+
+## 13. Rollback
 `task_sla` and reference tables have no `correlation_id`. Every run therefore writes `manifest.json` (sys_ids per table). Rollback deletes by that manifest, never by broad queries.
 
-## 13. Known limitations
+## 14. Known limitations
 - No audit, journal or metric history: the activity stream is empty on historic records.
 - Only the final assignment group is stored; intermediate groups of reassigned incidents are not.
 - SLA rows are computed by the generator, not by the SLA engine. `percentage` / `time_left` follow a documented approximation; analytics use `has_breached`, `business_percentage` and `business_duration`.
@@ -137,5 +152,5 @@ Durations use ServiceNow's duration format (offset from 1970-01-01). SLA definit
 - Changes carry no change model (`chg_model`), risk, CI or approval records; the Brazil `model` change type is not used.
 - Incident close codes are case-sensitive values with spaces (e.g. `Solution provided`), used exactly as on the instance.
 
-## 14. Instance facts
+## 15. Instance facts
 Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.
