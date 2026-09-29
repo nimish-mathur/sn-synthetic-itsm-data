@@ -9,12 +9,15 @@
  *
  * MODE 'smoke'    : needs 00-smoke-incident.json. Inserts 2 test incidents, re-sends (must skip), deletes them.
  * MODE 'load'     : loads every attached 01-..09- file in name order. Safe to re-run (existing records skipped).
+ *                  STOP_BEFORE = '07-' loads only 01-..06- (reference data); '' loads everything.
  * MODE 'rollback' : needs manifest.json. Deletes everything in it, children first.
  */
-var MODE = 'smoke';
+var MODE = 'load';
 var ONLY_PREFIX = '';                 // e.g. '07-' to load only changes; '' = all files
+var STOP_BEFORE = '';                 // skip files whose name sorts at or after this; '' = no limit
 var FIX_SCRIPT_NAME = 'NGI Synthetic Load';
 var SLICE = 500;                      // NGISynthLoader accepts at most 500 records per call
+var DROP_FIELDS = { incident: ['caused_by'] };   // fields absent on this instance (Brazil PDI: no incident.caused_by)
 
 (function () {
     var loader = new NGISynthLoader();
@@ -28,10 +31,14 @@ var SLICE = 500;                      // NGISynthLoader accepts at most 500 reco
     }
 
     var me = new GlideRecord('sys_script_fix');
-    if (!me.get('name', FIX_SCRIPT_NAME)) {
-        gs.error('[NGI.Load] Fix Script not found: ' + FIX_SCRIPT_NAME);
+    me.addQuery('name', FIX_SCRIPT_NAME);
+    me.query();
+    if (me.getRowCount() !== 1) {
+        gs.error('[NGI.Load] Expected exactly 1 Fix Script named "' + FIX_SCRIPT_NAME + '", found ' + me.getRowCount() +
+                 '. Keep the one with the attachments, delete the others.');
         return;
     }
+    me.next();
 
     function attached(test) {
         var list = [];
@@ -41,23 +48,41 @@ var SLICE = 500;                      // NGISynthLoader accepts at most 500 reco
         a.orderBy('file_name');
         a.query();
         while (a.next()) {
-            if (test(a.getValue('file_name'))) list.push({ name: a.getValue('file_name'), id: a.getUniqueValue() });
+            var fileName = String(a.getValue('file_name'));          // JS string (avoid Java String quirks)
+            if (test(fileName)) list.push({ name: fileName, id: String(a.getUniqueValue()) });
         }
         return list;
     }
 
+    var readMethod = '';
     function read(file) {
         var a = new GlideRecord('sys_attachment');
-        a.get(file.id);
-        return JSON.parse(att.getContent(a));
+        if (!a.get(file.id)) throw new Error('attachment record not found: ' + file.name);
+        var text = '';
+        try {                                                     // 1st choice: getContent
+            var c = att.getContent(a);
+            if (c) { text = String(c); readMethod = readMethod || 'getContent'; }
+        } catch (e1) { /* fall through */ }
+        if (!text) {                                              // fallback: stream + GlideTextReader
+            var reader = new GlideTextReader(att.getContentStream(file.id));
+            var parts = [], line;
+            while ((line = reader.readLine()) !== null) parts.push(String(line));
+            text = parts.join('\n');
+            if (text) readMethod = readMethod || 'getContentStream';
+        }
+        if (!text) throw new Error('could not read ' + file.name + ' (size_bytes=' + a.getValue('size_bytes') + ')');
+        return JSON.parse(text);
     }
 
     function writeLog() {
-        var stamp = new GlideDateTime().getValue().replace(/[: ]/g, '-');
+        var stamp = String(new GlideDateTime().getValue()).replace(/[: ]/g, '-');   // String(): Java -> JS
         att.write(me, 'load-log-' + MODE + '-' + stamp + '.txt', 'text/plain', log.join('\n'));
     }
 
     say('MODE=' + MODE + ' started ' + started.getDisplayValue());
+    var everything = attached(function () { return true; });
+    say('Attachments on this record: ' + everything.length +
+        (everything.length ? '  (first ' + everything[0].name + ', last ' + everything[everything.length - 1].name + ')' : ''));
     try {
         if (MODE === 'smoke') {
             var smoke = attached(function (n) { return n === '00-smoke-incident.json'; });
@@ -74,14 +99,23 @@ var SLICE = 500;                      // NGISynthLoader accepts at most 500 reco
 
         } else if (MODE === 'load') {
             var files = attached(function (n) {
-                return /^0[1-9]-.*\.json$/.test(n) && (!ONLY_PREFIX || n.indexOf(ONLY_PREFIX) === 0);
+                return /^0[1-9]-.*\.json$/.test(n) && (!ONLY_PREFIX || n.indexOf(ONLY_PREFIX) === 0) &&
+                       (!STOP_BEFORE || n < STOP_BEFORE);
             });
             if (!files.length) throw new Error('no 01-..09- files attached' + (ONLY_PREFIX ? ' for ' + ONLY_PREFIX : ''));
+            for (var dt in DROP_FIELDS) if (DROP_FIELDS.hasOwnProperty(dt)) say('Dropping fields on ' + dt + ': ' + DROP_FIELDS[dt].join(', '));
+            say('Files selected: ' + files.length + '  (first ' + files[0].name + ', last ' + files[files.length - 1].name + ')');
             var total = { inserted: 0, skipped: 0 };
             var stop = false;
             for (var f = 0; f < files.length && !stop; f++) {
                 var payload = read(files[f]);
                 var fileRes = { inserted: 0, skipped: 0 };
+                var drop = DROP_FIELDS[payload.table] || [];
+                if (drop.length) {
+                    for (var r = 0; r < payload.records.length; r++) {
+                        for (var x = 0; x < drop.length; x++) delete payload.records[r][drop[x]];
+                    }
+                }
                 for (var s = 0; s < payload.records.length; s += SLICE) {
                     var res = loader.loadBatch({ table: payload.table, options: payload.options,
                         resolve: payload.resolve, records: payload.records.slice(s, s + SLICE) });
@@ -117,6 +151,7 @@ var SLICE = 500;                      // NGISynthLoader accepts at most 500 reco
     } catch (e) {
         say('ERROR: ' + e);
     }
+    if (readMethod) say('Attachment read method: ' + readMethod);
     say('finished ' + new GlideDateTime().getDisplayValue());
     writeLog();
 })();

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2026-09-28 21:34:35">
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2026-09-29 07:48:39">
 <sys_remote_update_set action="INSERT_OR_UPDATE">
 <application display_value="Global">global</application>
 <application_name>Global</application_name>
@@ -20,298 +20,15 @@
 <summary/>
 <sys_class_name>sys_remote_update_set</sys_class_name>
 <sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 21:34:34</sys_created_on>
-<sys_id>0054472247e7c710490f8c64116d43e6</sys_id>
+<sys_created_on>2026-09-29 07:48:38</sys_created_on>
+<sys_id>8fd015be476b0b10490f8c64116d4319</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 21:34:34</sys_updated_on>
+<sys_updated_on>2026-09-29 07:48:38</sys_updated_on>
 <update_set display_value=""/>
 <update_source display_value=""/>
 <updated/>
 </sys_remote_update_set>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="Global">global</application>
-<category>customer</category>
-<comments/>
-<name>sys_ws_definition_d736e1aa47e78710490f8c64116d43b0</name>
-<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition"><sys_ws_definition action="INSERT_OR_UPDATE"><active>false</active><base_uri>/api/1814931/ngi_synth</base_uri><consumes>application/json,application/xml,text/xml</consumes><consumes_customized>false</consumes_customized><default_version>No active default version</default_version><doc_link/><enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl><is_versioned>false</is_versioned><name>NGI Synthetic Loader</name><namespace>1814931</namespace><produces>application/json,application/xml,text/xml</produces><produces_customized>false</produces_customized><service_id>ngi_synth</service_id><short_description/><sys_class_name>sys_ws_definition</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 14:49:38</sys_created_on><sys_id>d736e1aa47e78710490f8c64116d43b0</sys_id><sys_mod_count>2</sys_mod_count><sys_name>NGI Synthetic Loader</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_ws_definition_d736e1aa47e78710490f8c64116d43b0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 17:25:17</sys_updated_on></sys_ws_definition></record_update>]]></payload>
-<payload_hash>-897194585</payload_hash>
-<remote_update_set display_value="NGI-P0-01-synthetic-loader">0054472247e7c710490f8c64116d43e6</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 21:34:34</sys_created_on>
-<sys_id>0454472247e7c710490f8c64116d43e7</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_recorded_at>1a0e90cb01d0000001</sys_recorded_at>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 21:34:34</sys_updated_on>
-<table/>
-<target_name>NGI Synthetic Loader</target_name>
-<type>Scripted REST API</type>
-<update_domain>global</update_domain>
-<update_guid>e84b4e2ee82f8710fb28979123009374</update_guid>
-<update_guid_history>e84b4e2ee82f8710fb28979123009374:-897194585,ba8a65e6ee2b8710925c3ec9119f281f:1266655742,58a7a162fd2b871006c01458d01a31ce:-212503983</update_guid_history>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="Global">global</application>
-<category>customer</category>
-<comments/>
-<name>pwd_process_4ff0c881bf220100710071a7bf0739fa</name>
-<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pwd_process"><pwd_process action="INSERT_OR_UPDATE"><active>false</active><allow_verification_choice>false</allow_verification_choice><apply_to_all_users>true</apply_to_all_users><auto_gen_password>true</auto_gen_password><change>false</change><cred_store display_value="Local ServiceNow Instance">6e51033fbf020100710071a7bf0739e0</cred_store><description>Service-desk process for the local ServiceNow as a stand-alone credential-store</description><display_captcha>false</display_captcha><display_password>true</display_password><email_password_reset_url>false</email_password_reset_url><enable_security_score_notification>false</enable_security_score_notification><enabled_on_chatbot>false</enabled_on_chatbot><enrollment_reminder>false</enrollment_reminder><expiration_run_period/><expiration_run_start/><expiration_run_time/><expiration_run_time_zone/><expiration_schedule_frequency/><expiration_warn_days/><identification_type/><label>Service-Desk Password Reset for Local ServiceNow</label><min_verifications>1</min_verifications><name>Service-Desk Password Reset for Local ServiceNow</name><password_needs_reset>true</password_needs_reset><post_processor/><process_owner/><public_access>false</public_access><public_url/><pwd_validity_days/><redirect_url/><reset>true</reset><run_dayofmonth/><run_dayofweek/><run_start/><run_time/><run_type/><security_score/><send_email>true</send_email><send_expiration_reminder>false</send_expiration_reminder><sender_alias/><sys_class_name>pwd_process</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2013-07-11 18:00:54</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>4ff0c881bf220100710071a7bf0739fa</sys_id><sys_mod_count>12</sys_mod_count><sys_name>Service-Desk Password Reset for Local ServiceNow</sys_name><sys_package display_value="Password Reset" source="com.glideapp.password_reset">12b77e7b8c1903100a22deb6dd2b4e46</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>pwd_process_4ff0c881bf220100710071a7bf0739fa</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 07:01:42</sys_updated_on><unlock_account>true</unlock_account><url_suffix/><user_experience_entry/><user_experience_failure/><user_experience_footer/><user_experience_header/><user_experience_success/></pwd_process><sys_translated_text action="delete_multiple" query="documentkey=4ff0c881bf220100710071a7bf0739fa"/></record_update>]]></payload>
-<payload_hash>559401970</payload_hash>
-<remote_update_set display_value="NGI-P0-01-synthetic-loader">0054472247e7c710490f8c64116d43e6</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 21:34:34</sys_created_on>
-<sys_id>4454472247e7c710490f8c64116d43e6</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_recorded_at>1a0e6d1cdf60000001</sys_recorded_at>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 21:34:34</sys_updated_on>
-<table/>
-<target_name>Service-Desk Password Reset for Local ServiceNow</target_name>
-<type>Password Reset Process</type>
-<update_domain>global</update_domain>
-<update_guid>568cbfde9b6b47108b699a73d7473c1b</update_guid>
-<update_guid_history>568cbfde9b6b47108b699a73d7473c1b:559401970,b09a5cf59f13031099d5d1bc32d300f7:559401970</update_guid_history>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="Global">global</application>
-<category>customer</category>
-<comments/>
-<name>sys_ws_operation_a23efd2247eb8710490f8c64116d4314</name>
-<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ws_operation"&gt;&lt;sys_ws_operation action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;consumes&gt;application/json,application/xml,text/xml&lt;/consumes&gt;&lt;consumes_customized&gt;false&lt;/consumes_customized&gt;&lt;default_operation_uri/&gt;&lt;enforce_acl/&gt;&lt;http_method&gt;POST&lt;/http_method&gt;&lt;name&gt;rollback&lt;/name&gt;&lt;operation_script&gt;&lt;![CDATA[// Scripted REST resource: POST /rollback  (NGI Synthetic Loader)  body: {table, ids[]}
-(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
-    if (!gs.hasRole('admin')) {
-        response.setStatus(403);
-        response.setBody({ error: 'admin role required' });
-        return;
-    }
-    try {
-        var body = request.body.data;
-        response.setStatus(200);
-        response.setBody({ table: body.table, deleted: new NGISynthLoader().rollbackByIds(String(body.table), body.ids) });
-    } catch (e) {
-        response.setStatus(400);
-        response.setBody({ error: String(e) });
-    }
-})(request, response);
-]]&gt;&lt;/operation_script&gt;&lt;operation_uri&gt;/api/1814931/ngi_synth/rollback&lt;/operation_uri&gt;&lt;produces&gt;application/json,application/xml,text/xml&lt;/produces&gt;&lt;produces_customized&gt;false&lt;/produces_customized&gt;&lt;relative_path&gt;/rollback&lt;/relative_path&gt;&lt;request_example/&gt;&lt;requires_acl_authorization&gt;true&lt;/requires_acl_authorization&gt;&lt;requires_authentication&gt;true&lt;/requires_authentication&gt;&lt;requires_snc_internal_role&gt;true&lt;/requires_snc_internal_role&gt;&lt;short_description/&gt;&lt;support_trailing_slash&gt;false&lt;/support_trailing_slash&gt;&lt;sys_class_name&gt;sys_ws_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:29:14&lt;/sys_created_on&gt;&lt;sys_id&gt;a23efd2247eb8710490f8c64116d4314&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;rollback&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ws_operation_a23efd2247eb8710490f8c64116d4314&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:29:14&lt;/sys_updated_on&gt;&lt;web_service_definition display_value="NGI Synthetic Loader"&gt;d736e1aa47e78710490f8c64116d43b0&lt;/web_service_definition&gt;&lt;web_service_version/&gt;&lt;/sys_ws_operation&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;a23efd2247eb8710490f8c64116d4314&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:29:13&lt;/sys_created_on&gt;&lt;sys_id&gt;576e7d62476b8710490f8c64116d4367&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:29:13&lt;/sys_updated_on&gt;&lt;table&gt;sys_ws_operation&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
-<payload_hash>406603230</payload_hash>
-<remote_update_set display_value="NGI-P0-01-synthetic-loader">0054472247e7c710490f8c64116d43e6</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 21:34:34</sys_created_on>
-<sys_id>4854472247e7c710490f8c64116d43e7</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_recorded_at>1a0e8d95d3f0000001</sys_recorded_at>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 21:34:34</sys_updated_on>
-<table/>
-<target_name>rollback</target_name>
-<type>Scripted REST Resource</type>
-<update_domain>global</update_domain>
-<update_guid>136eb5627eeb8710be09a17a59fc9481</update_guid>
-<update_guid_history>136eb5627eeb8710be09a17a59fc9481:406603230</update_guid_history>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="Global">global</application>
-<category>customer</category>
-<comments/>
-<name>sys_script_fix_819242aa47eb8710490f8c64116d43fa</name>
-<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_fix"&gt;&lt;sys_script_fix action="INSERT_OR_UPDATE"&gt;&lt;before&gt;false&lt;/before&gt;&lt;description/&gt;&lt;name&gt;NGI Synthetic Load&lt;/name&gt;&lt;record_for_rollback&gt;false&lt;/record_for_rollback&gt;&lt;script&gt;&lt;![CDATA[/**
- * Fix Script: "NGI Synthetic Load"  (browser route – no API password needed)
- *
- * 1. Attach files from output/upload/ to THIS Fix Script record (paperclip icon).
- * 2. Set MODE below, click Update.
- * 3. Click "Run Fix Script" -&gt; "Proceed in Background".
- * 4. Refresh the record: results are in the attachment "load-log-&lt;time&gt;.txt"
- *    (also in System Logs &gt; All, message starting with [NGI.Load]).
- *
- * MODE 'smoke'    : needs 00-smoke-incident.json. Inserts 2 test incidents, re-sends (must skip), deletes them.
- * MODE 'load'     : loads every attached 01-..09- file in name order. Safe to re-run (existing records skipped).
- * MODE 'rollback' : needs manifest.json. Deletes everything in it, children first.
- */
-var MODE = 'smoke';
-var ONLY_PREFIX = '';                 // e.g. '07-' to load only changes; '' = all files
-var FIX_SCRIPT_NAME = 'NGI Synthetic Load';
-var SLICE = 500;                      // NGISynthLoader accepts at most 500 records per call
-
-(function () {
-    var loader = new NGISynthLoader();
-    var att = new GlideSysAttachment();
-    var log = [];
-    var started = new GlideDateTime();
-
-    function say(msg) {
-        log.push(msg);
-        gs.info('[NGI.Load] ' + msg);
-    }
-
-    var me = new GlideRecord('sys_script_fix');
-    if (!me.get('name', FIX_SCRIPT_NAME)) {
-        gs.error('[NGI.Load] Fix Script not found: ' + FIX_SCRIPT_NAME);
-        return;
-    }
-
-    function attached(test) {
-        var list = [];
-        var a = new GlideRecord('sys_attachment');
-        a.addQuery('table_name', 'sys_script_fix');
-        a.addQuery('table_sys_id', me.getUniqueValue());
-        a.orderBy('file_name');
-        a.query();
-        while (a.next()) {
-            if (test(a.getValue('file_name'))) list.push({ name: a.getValue('file_name'), id: a.getUniqueValue() });
-        }
-        return list;
-    }
-
-    function read(file) {
-        var a = new GlideRecord('sys_attachment');
-        a.get(file.id);
-        return JSON.parse(att.getContent(a));
-    }
-
-    function writeLog() {
-        var stamp = new GlideDateTime().getValue().replace(/[: ]/g, '-');
-        att.write(me, 'load-log-' + MODE + '-' + stamp + '.txt', 'text/plain', log.join('\n'));
-    }
-
-    say('MODE=' + MODE + ' started ' + started.getDisplayValue());
-    try {
-        if (MODE === 'smoke') {
-            var smoke = attached(function (n) { return n === '00-smoke-incident.json'; });
-            if (!smoke.length) throw new Error('00-smoke-incident.json is not attached');
-            var ids = [];
-            var p1 = read(smoke[0]);
-            for (var i = 0; i &lt; p1.records.length; i++) ids.push(p1.records[i].sys_id);
-            var r1 = loader.loadBatch(p1);
-            var r2 = loader.loadBatch(read(smoke[0]));
-            var deleted = loader.rollbackByIds('incident', ids);
-            say((r1.inserted === 2 &amp;&amp; !r1.errors.length ? 'PASS' : 'FAIL') + '  insert 2  ' + JSON.stringify(r1));
-            say((r2.skipped === 2 &amp;&amp; r2.inserted === 0 ? 'PASS' : 'FAIL') + '  re-send skips 2  ' + JSON.stringify(r2));
-            say((deleted === 2 ? 'PASS' : 'FAIL') + '  rollback deletes 2  (deleted ' + deleted + ')');
-
-        } else if (MODE === 'load') {
-            var files = attached(function (n) {
-                return /^0[1-9]-.*\.json$/.test(n) &amp;&amp; (!ONLY_PREFIX || n.indexOf(ONLY_PREFIX) === 0);
-            });
-            if (!files.length) throw new Error('no 01-..09- files attached' + (ONLY_PREFIX ? ' for ' + ONLY_PREFIX : ''));
-            var total = { inserted: 0, skipped: 0 };
-            var stop = false;
-            for (var f = 0; f &lt; files.length &amp;&amp; !stop; f++) {
-                var payload = read(files[f]);
-                var fileRes = { inserted: 0, skipped: 0 };
-                for (var s = 0; s &lt; payload.records.length; s += SLICE) {
-                    var res = loader.loadBatch({ table: payload.table, options: payload.options,
-                        resolve: payload.resolve, records: payload.records.slice(s, s + SLICE) });
-                    fileRes.inserted += res.inserted;
-                    fileRes.skipped += res.skipped;
-                    if (res.errors.length) {
-                        say('STOPPED in ' + files[f].name + ' (' + res.errors.length + ' errors). First: ' + res.errors[0]);
-                        stop = true;
-                        break;
-                    }
-                }
-                total.inserted += fileRes.inserted;
-                total.skipped += fileRes.skipped;
-                say(files[f].name + '  inserted ' + fileRes.inserted + '  skipped ' + fileRes.skipped);
-            }
-            say('TOTAL inserted ' + total.inserted + '  skipped ' + total.skipped + (stop ? '  (STOPPED)' : '  (COMPLETE)'));
-
-        } else if (MODE === 'rollback') {
-            var man = attached(function (n) { return n === 'manifest.json'; });
-            if (!man.length) throw new Error('manifest.json is not attached');
-            var tables = read(man[0]).tables;
-            var order = ['task_sla', 'incident', 'change_request', 'sys_user_grmember', 'sys_user_group',
-                         'sys_user', 'cmn_department', 'cmn_location', 'core_company'];
-            for (var t = 0; t &lt; order.length; t++) {
-                var list = tables[order[t]] || [];
-                var gone = 0;
-                for (var k = 0; k &lt; list.length; k += SLICE) gone += loader.rollbackByIds(order[t], list.slice(k, k + SLICE));
-                if (list.length) say(order[t] + '  deleted ' + gone + ' of ' + list.length);
-            }
-        } else {
-            throw new Error('Unknown MODE: ' + MODE);
-        }
-    } catch (e) {
-        say('ERROR: ' + e);
-    }
-    say('finished ' + new GlideDateTime().getDisplayValue());
-    writeLog();
-})();
-]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_fix&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:49:19&lt;/sys_created_on&gt;&lt;sys_id&gt;819242aa47eb8710490f8c64116d43fa&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;NGI Synthetic Load&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_fix_819242aa47eb8710490f8c64116d43fa&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:49:19&lt;/sys_updated_on&gt;&lt;unloadable&gt;false&lt;/unloadable&gt;&lt;/sys_script_fix&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;819242aa47eb8710490f8c64116d43fa&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:49:19&lt;/sys_created_on&gt;&lt;sys_id&gt;690342ea47eb8710490f8c64116d4314&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:49:19&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_fix&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
-<payload_hash>-614925279</payload_hash>
-<remote_update_set display_value="NGI-P0-01-synthetic-loader">0054472247e7c710490f8c64116d43e6</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 21:34:34</sys_created_on>
-<sys_id>8854472247e7c710490f8c64116d43e6</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_recorded_at>1a0e8ebc2480000001</sys_recorded_at>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 21:34:34</sys_updated_on>
-<table/>
-<target_name>NGI Synthetic Load</target_name>
-<type>Fix Script</type>
-<update_domain>global</update_domain>
-<update_guid>a50342ea81eb8710e90eee052b55781a</update_guid>
-<update_guid_history>a50342ea81eb8710e90eee052b55781a:-614925279</update_guid_history>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="Global">global</application>
-<category>customer</category>
-<comments/>
-<name>sys_ws_operation_e4ed352247eb8710490f8c64116d432e</name>
-<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ws_operation"&gt;&lt;sys_ws_operation action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;consumes&gt;application/json,application/xml,text/xml&lt;/consumes&gt;&lt;consumes_customized&gt;false&lt;/consumes_customized&gt;&lt;default_operation_uri/&gt;&lt;enforce_acl/&gt;&lt;http_method&gt;POST&lt;/http_method&gt;&lt;name&gt;batch&lt;/name&gt;&lt;operation_script&gt;&lt;![CDATA[// Scripted REST resource: POST /batch  (NGI Synthetic Loader)
-(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
-    if (!gs.hasRole('admin')) {
-        response.setStatus(403);
-        response.setBody({ error: 'admin role required' });
-        return;
-    }
-    try {
-        response.setStatus(200);
-        response.setBody(new NGISynthLoader().loadBatch(request.body.data));
-    } catch (e) {
-        response.setStatus(400);
-        response.setBody({ error: String(e) });
-    }
-})(request, response);
-]]&gt;&lt;/operation_script&gt;&lt;operation_uri&gt;/api/1814931/ngi_synth/batch&lt;/operation_uri&gt;&lt;produces&gt;application/json,application/xml,text/xml&lt;/produces&gt;&lt;produces_customized&gt;false&lt;/produces_customized&gt;&lt;relative_path&gt;/batch&lt;/relative_path&gt;&lt;request_example/&gt;&lt;requires_acl_authorization&gt;true&lt;/requires_acl_authorization&gt;&lt;requires_authentication&gt;true&lt;/requires_authentication&gt;&lt;requires_snc_internal_role&gt;true&lt;/requires_snc_internal_role&gt;&lt;short_description/&gt;&lt;support_trailing_slash&gt;false&lt;/support_trailing_slash&gt;&lt;sys_class_name&gt;sys_ws_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:28:07&lt;/sys_created_on&gt;&lt;sys_id&gt;e4ed352247eb8710490f8c64116d432e&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;batch&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ws_operation_e4ed352247eb8710490f8c64116d432e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:28:07&lt;/sys_updated_on&gt;&lt;web_service_definition display_value="NGI Synthetic Loader"&gt;d736e1aa47e78710490f8c64116d43b0&lt;/web_service_definition&gt;&lt;web_service_version/&gt;&lt;/sys_ws_operation&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;e4ed352247eb8710490f8c64116d432e&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:28:07&lt;/sys_created_on&gt;&lt;sys_id&gt;0b2ef9aa47ab8710490f8c64116d4334&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:28:07&lt;/sys_updated_on&gt;&lt;table&gt;sys_ws_operation&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
-<payload_hash>-2043638364</payload_hash>
-<remote_update_set display_value="NGI-P0-01-synthetic-loader">0054472247e7c710490f8c64116d43e6</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 21:34:34</sys_created_on>
-<sys_id>8c54472247e7c710490f8c64116d43e7</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_recorded_at>1a0e8d859b70000001</sys_recorded_at>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 21:34:34</sys_updated_on>
-<table/>
-<target_name>batch</target_name>
-<type>Scripted REST Resource</type>
-<update_domain>global</update_domain>
-<update_guid>0f2e7d22d9eb8710d778882f62a12685</update_guid>
-<update_guid_history>0f2e7d22d9eb8710d778882f62a12685:-2043638364</update_guid_history>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
 <sys_update_xml action="INSERT_OR_UPDATE">
 <action>INSERT_OR_UPDATE</action>
 <application display_value="Global">global</application>
@@ -482,21 +199,304 @@ NGISynthLoader.prototype = {
 };
 ]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-27 17:53:16&lt;/sys_created_on&gt;&lt;sys_id&gt;4987091647a30710490f8c64116d43ec&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;NGISynthLoader&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_4987091647a30710490f8c64116d43ec&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:47:02&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;4987091647a30710490f8c64116d43ec&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-27 17:53:15&lt;/sys_created_on&gt;&lt;sys_id&gt;581809d247a30710490f8c64116d43c8&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-27 17:53:15&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_include&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
 <payload_hash>269205749</payload_hash>
-<remote_update_set display_value="NGI-P0-01-synthetic-loader">0054472247e7c710490f8c64116d43e6</remote_update_set>
+<remote_update_set display_value="NGI-P0-01-synthetic-loader">8fd015be476b0b10490f8c64116d4319</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-09-28 21:34:34</sys_created_on>
-<sys_id>cc54472247e7c710490f8c64116d43e6</sys_id>
+<sys_created_on>2026-09-29 07:48:38</sys_created_on>
+<sys_id>0fd019be476b0b10490f8c64116d436d</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_recorded_at>1a0e8e9ab410000001</sys_recorded_at>
 <sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-09-28 21:34:34</sys_updated_on>
+<sys_updated_on>2026-09-29 07:48:38</sys_updated_on>
 <table/>
 <target_name>NGISynthLoader</target_name>
 <type>Script Include</type>
 <update_domain>global</update_domain>
 <update_guid>8082ce6a80eb87105b0be7288d26d1b0</update_guid>
 <update_guid_history>8082ce6a80eb87105b0be7288d26d1b0:269205749,2818c956b1a307106cbaa3ad073263a5:1192567692</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ws_definition_d736e1aa47e78710490f8c64116d43b0</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition"><sys_ws_definition action="INSERT_OR_UPDATE"><active>false</active><base_uri>/api/1814931/ngi_synth</base_uri><consumes>application/json,application/xml,text/xml</consumes><consumes_customized>false</consumes_customized><default_version>No active default version</default_version><doc_link/><enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl><is_versioned>false</is_versioned><name>NGI Synthetic Loader</name><namespace>1814931</namespace><produces>application/json,application/xml,text/xml</produces><produces_customized>false</produces_customized><service_id>ngi_synth</service_id><short_description/><sys_class_name>sys_ws_definition</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-28 14:49:38</sys_created_on><sys_id>d736e1aa47e78710490f8c64116d43b0</sys_id><sys_mod_count>2</sys_mod_count><sys_name>NGI Synthetic Loader</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_ws_definition_d736e1aa47e78710490f8c64116d43b0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 17:25:17</sys_updated_on></sys_ws_definition></record_update>]]></payload>
+<payload_hash>-897194585</payload_hash>
+<remote_update_set display_value="NGI-P0-01-synthetic-loader">8fd015be476b0b10490f8c64116d4319</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-29 07:48:38</sys_created_on>
+<sys_id>43d019be476b0b10490f8c64116d436e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e90cb01d0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-29 07:48:38</sys_updated_on>
+<table/>
+<target_name>NGI Synthetic Loader</target_name>
+<type>Scripted REST API</type>
+<update_domain>global</update_domain>
+<update_guid>e84b4e2ee82f8710fb28979123009374</update_guid>
+<update_guid_history>e84b4e2ee82f8710fb28979123009374:-897194585,ba8a65e6ee2b8710925c3ec9119f281f:1266655742,58a7a162fd2b871006c01458d01a31ce:-212503983</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ws_operation_a23efd2247eb8710490f8c64116d4314</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ws_operation"&gt;&lt;sys_ws_operation action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;consumes&gt;application/json,application/xml,text/xml&lt;/consumes&gt;&lt;consumes_customized&gt;false&lt;/consumes_customized&gt;&lt;default_operation_uri/&gt;&lt;enforce_acl/&gt;&lt;http_method&gt;POST&lt;/http_method&gt;&lt;name&gt;rollback&lt;/name&gt;&lt;operation_script&gt;&lt;![CDATA[// Scripted REST resource: POST /rollback  (NGI Synthetic Loader)  body: {table, ids[]}
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    if (!gs.hasRole('admin')) {
+        response.setStatus(403);
+        response.setBody({ error: 'admin role required' });
+        return;
+    }
+    try {
+        var body = request.body.data;
+        response.setStatus(200);
+        response.setBody({ table: body.table, deleted: new NGISynthLoader().rollbackByIds(String(body.table), body.ids) });
+    } catch (e) {
+        response.setStatus(400);
+        response.setBody({ error: String(e) });
+    }
+})(request, response);
+]]&gt;&lt;/operation_script&gt;&lt;operation_uri&gt;/api/1814931/ngi_synth/rollback&lt;/operation_uri&gt;&lt;produces&gt;application/json,application/xml,text/xml&lt;/produces&gt;&lt;produces_customized&gt;false&lt;/produces_customized&gt;&lt;relative_path&gt;/rollback&lt;/relative_path&gt;&lt;request_example/&gt;&lt;requires_acl_authorization&gt;true&lt;/requires_acl_authorization&gt;&lt;requires_authentication&gt;true&lt;/requires_authentication&gt;&lt;requires_snc_internal_role&gt;true&lt;/requires_snc_internal_role&gt;&lt;short_description/&gt;&lt;support_trailing_slash&gt;false&lt;/support_trailing_slash&gt;&lt;sys_class_name&gt;sys_ws_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:29:14&lt;/sys_created_on&gt;&lt;sys_id&gt;a23efd2247eb8710490f8c64116d4314&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;rollback&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ws_operation_a23efd2247eb8710490f8c64116d4314&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:29:14&lt;/sys_updated_on&gt;&lt;web_service_definition display_value="NGI Synthetic Loader"&gt;d736e1aa47e78710490f8c64116d43b0&lt;/web_service_definition&gt;&lt;web_service_version/&gt;&lt;/sys_ws_operation&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;a23efd2247eb8710490f8c64116d4314&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:29:13&lt;/sys_created_on&gt;&lt;sys_id&gt;576e7d62476b8710490f8c64116d4367&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:29:13&lt;/sys_updated_on&gt;&lt;table&gt;sys_ws_operation&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+<payload_hash>406603230</payload_hash>
+<remote_update_set display_value="NGI-P0-01-synthetic-loader">8fd015be476b0b10490f8c64116d4319</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-29 07:48:38</sys_created_on>
+<sys_id>87d019be476b0b10490f8c64116d436e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e8d95d3f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-29 07:48:38</sys_updated_on>
+<table/>
+<target_name>rollback</target_name>
+<type>Scripted REST Resource</type>
+<update_domain>global</update_domain>
+<update_guid>136eb5627eeb8710be09a17a59fc9481</update_guid>
+<update_guid_history>136eb5627eeb8710be09a17a59fc9481:406603230</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>pwd_process_4ff0c881bf220100710071a7bf0739fa</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pwd_process"><pwd_process action="INSERT_OR_UPDATE"><active>false</active><allow_verification_choice>false</allow_verification_choice><apply_to_all_users>true</apply_to_all_users><auto_gen_password>true</auto_gen_password><change>false</change><cred_store display_value="Local ServiceNow Instance">6e51033fbf020100710071a7bf0739e0</cred_store><description>Service-desk process for the local ServiceNow as a stand-alone credential-store</description><display_captcha>false</display_captcha><display_password>true</display_password><email_password_reset_url>false</email_password_reset_url><enable_security_score_notification>false</enable_security_score_notification><enabled_on_chatbot>false</enabled_on_chatbot><enrollment_reminder>false</enrollment_reminder><expiration_run_period/><expiration_run_start/><expiration_run_time/><expiration_run_time_zone/><expiration_schedule_frequency/><expiration_warn_days/><identification_type/><label>Service-Desk Password Reset for Local ServiceNow</label><min_verifications>1</min_verifications><name>Service-Desk Password Reset for Local ServiceNow</name><password_needs_reset>true</password_needs_reset><post_processor/><process_owner/><public_access>false</public_access><public_url/><pwd_validity_days/><redirect_url/><reset>true</reset><run_dayofmonth/><run_dayofweek/><run_start/><run_time/><run_type/><security_score/><send_email>true</send_email><send_expiration_reminder>false</send_expiration_reminder><sender_alias/><sys_class_name>pwd_process</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2013-07-11 18:00:54</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>4ff0c881bf220100710071a7bf0739fa</sys_id><sys_mod_count>12</sys_mod_count><sys_name>Service-Desk Password Reset for Local ServiceNow</sys_name><sys_package display_value="Password Reset" source="com.glideapp.password_reset">12b77e7b8c1903100a22deb6dd2b4e46</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>pwd_process_4ff0c881bf220100710071a7bf0739fa</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-28 07:01:42</sys_updated_on><unlock_account>true</unlock_account><url_suffix/><user_experience_entry/><user_experience_failure/><user_experience_footer/><user_experience_header/><user_experience_success/></pwd_process><sys_translated_text action="delete_multiple" query="documentkey=4ff0c881bf220100710071a7bf0739fa"/></record_update>]]></payload>
+<payload_hash>559401970</payload_hash>
+<remote_update_set display_value="NGI-P0-01-synthetic-loader">8fd015be476b0b10490f8c64116d4319</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-29 07:48:38</sys_created_on>
+<sys_id>c3d015be476b0b10490f8c64116d431a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e6d1cdf60000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-29 07:48:38</sys_updated_on>
+<table/>
+<target_name>Service-Desk Password Reset for Local ServiceNow</target_name>
+<type>Password Reset Process</type>
+<update_domain>global</update_domain>
+<update_guid>568cbfde9b6b47108b699a73d7473c1b</update_guid>
+<update_guid_history>568cbfde9b6b47108b699a73d7473c1b:559401970,b09a5cf59f13031099d5d1bc32d300f7:559401970</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_fix_819242aa47eb8710490f8c64116d43fa</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_fix"&gt;&lt;sys_script_fix action="INSERT_OR_UPDATE"&gt;&lt;before&gt;false&lt;/before&gt;&lt;description/&gt;&lt;name&gt;NGI Synthetic Load&lt;/name&gt;&lt;record_for_rollback&gt;false&lt;/record_for_rollback&gt;&lt;script&gt;&lt;![CDATA[/**
+ * Fix Script: "NGI Synthetic Load"  (browser route – no API password needed)
+ *
+ * 1. Attach files from output/upload/ to THIS Fix Script record (paperclip icon).
+ * 2. Set MODE below, click Update.
+ * 3. Click "Run Fix Script" -&gt; "Proceed in Background".
+ * 4. Refresh the record: results are in the attachment "load-log-&lt;time&gt;.txt"
+ *    (also in System Logs &gt; All, message starting with [NGI.Load]).
+ *
+ * MODE 'smoke'    : needs 00-smoke-incident.json. Inserts 2 test incidents, re-sends (must skip), deletes them.
+ * MODE 'load'     : loads every attached 01-..09- file in name order. Safe to re-run (existing records skipped).
+ * MODE 'rollback' : needs manifest.json. Deletes everything in it, children first.
+ */
+var MODE = 'smoke';
+var ONLY_PREFIX = '';                 // e.g. '07-' to load only changes; '' = all files
+var FIX_SCRIPT_NAME = 'NGI Synthetic Load';
+var SLICE = 500;                      // NGISynthLoader accepts at most 500 records per call
+
+(function () {
+    var loader = new NGISynthLoader();
+    var att = new GlideSysAttachment();
+    var log = [];
+    var started = new GlideDateTime();
+
+    function say(msg) {
+        log.push(msg);
+        gs.info('[NGI.Load] ' + msg);
+    }
+
+    var me = new GlideRecord('sys_script_fix');
+    if (!me.get('name', FIX_SCRIPT_NAME)) {
+        gs.error('[NGI.Load] Fix Script not found: ' + FIX_SCRIPT_NAME);
+        return;
+    }
+
+    function attached(test) {
+        var list = [];
+        var a = new GlideRecord('sys_attachment');
+        a.addQuery('table_name', 'sys_script_fix');
+        a.addQuery('table_sys_id', me.getUniqueValue());
+        a.orderBy('file_name');
+        a.query();
+        while (a.next()) {
+            if (test(a.getValue('file_name'))) list.push({ name: a.getValue('file_name'), id: a.getUniqueValue() });
+        }
+        return list;
+    }
+
+    function read(file) {
+        var a = new GlideRecord('sys_attachment');
+        a.get(file.id);
+        return JSON.parse(att.getContent(a));
+    }
+
+    function writeLog() {
+        var stamp = new GlideDateTime().getValue().replace(/[: ]/g, '-');
+        att.write(me, 'load-log-' + MODE + '-' + stamp + '.txt', 'text/plain', log.join('\n'));
+    }
+
+    say('MODE=' + MODE + ' started ' + started.getDisplayValue());
+    try {
+        if (MODE === 'smoke') {
+            var smoke = attached(function (n) { return n === '00-smoke-incident.json'; });
+            if (!smoke.length) throw new Error('00-smoke-incident.json is not attached');
+            var ids = [];
+            var p1 = read(smoke[0]);
+            for (var i = 0; i &lt; p1.records.length; i++) ids.push(p1.records[i].sys_id);
+            var r1 = loader.loadBatch(p1);
+            var r2 = loader.loadBatch(read(smoke[0]));
+            var deleted = loader.rollbackByIds('incident', ids);
+            say((r1.inserted === 2 &amp;&amp; !r1.errors.length ? 'PASS' : 'FAIL') + '  insert 2  ' + JSON.stringify(r1));
+            say((r2.skipped === 2 &amp;&amp; r2.inserted === 0 ? 'PASS' : 'FAIL') + '  re-send skips 2  ' + JSON.stringify(r2));
+            say((deleted === 2 ? 'PASS' : 'FAIL') + '  rollback deletes 2  (deleted ' + deleted + ')');
+
+        } else if (MODE === 'load') {
+            var files = attached(function (n) {
+                return /^0[1-9]-.*\.json$/.test(n) &amp;&amp; (!ONLY_PREFIX || n.indexOf(ONLY_PREFIX) === 0);
+            });
+            if (!files.length) throw new Error('no 01-..09- files attached' + (ONLY_PREFIX ? ' for ' + ONLY_PREFIX : ''));
+            var total = { inserted: 0, skipped: 0 };
+            var stop = false;
+            for (var f = 0; f &lt; files.length &amp;&amp; !stop; f++) {
+                var payload = read(files[f]);
+                var fileRes = { inserted: 0, skipped: 0 };
+                for (var s = 0; s &lt; payload.records.length; s += SLICE) {
+                    var res = loader.loadBatch({ table: payload.table, options: payload.options,
+                        resolve: payload.resolve, records: payload.records.slice(s, s + SLICE) });
+                    fileRes.inserted += res.inserted;
+                    fileRes.skipped += res.skipped;
+                    if (res.errors.length) {
+                        say('STOPPED in ' + files[f].name + ' (' + res.errors.length + ' errors). First: ' + res.errors[0]);
+                        stop = true;
+                        break;
+                    }
+                }
+                total.inserted += fileRes.inserted;
+                total.skipped += fileRes.skipped;
+                say(files[f].name + '  inserted ' + fileRes.inserted + '  skipped ' + fileRes.skipped);
+            }
+            say('TOTAL inserted ' + total.inserted + '  skipped ' + total.skipped + (stop ? '  (STOPPED)' : '  (COMPLETE)'));
+
+        } else if (MODE === 'rollback') {
+            var man = attached(function (n) { return n === 'manifest.json'; });
+            if (!man.length) throw new Error('manifest.json is not attached');
+            var tables = read(man[0]).tables;
+            var order = ['task_sla', 'incident', 'change_request', 'sys_user_grmember', 'sys_user_group',
+                         'sys_user', 'cmn_department', 'cmn_location', 'core_company'];
+            for (var t = 0; t &lt; order.length; t++) {
+                var list = tables[order[t]] || [];
+                var gone = 0;
+                for (var k = 0; k &lt; list.length; k += SLICE) gone += loader.rollbackByIds(order[t], list.slice(k, k + SLICE));
+                if (list.length) say(order[t] + '  deleted ' + gone + ' of ' + list.length);
+            }
+        } else {
+            throw new Error('Unknown MODE: ' + MODE);
+        }
+    } catch (e) {
+        say('ERROR: ' + e);
+    }
+    say('finished ' + new GlideDateTime().getDisplayValue());
+    writeLog();
+})();
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_fix&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:49:19&lt;/sys_created_on&gt;&lt;sys_id&gt;819242aa47eb8710490f8c64116d43fa&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;NGI Synthetic Load&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_fix_819242aa47eb8710490f8c64116d43fa&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:49:19&lt;/sys_updated_on&gt;&lt;unloadable&gt;false&lt;/unloadable&gt;&lt;/sys_script_fix&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;819242aa47eb8710490f8c64116d43fa&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:49:19&lt;/sys_created_on&gt;&lt;sys_id&gt;690342ea47eb8710490f8c64116d4314&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:49:19&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_fix&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-614925279</payload_hash>
+<remote_update_set display_value="NGI-P0-01-synthetic-loader">8fd015be476b0b10490f8c64116d4319</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-29 07:48:38</sys_created_on>
+<sys_id>c7d019be476b0b10490f8c64116d436d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e8ebc2480000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-29 07:48:38</sys_updated_on>
+<table/>
+<target_name>NGI Synthetic Load</target_name>
+<type>Fix Script</type>
+<update_domain>global</update_domain>
+<update_guid>a50342ea81eb8710e90eee052b55781a</update_guid>
+<update_guid_history>a50342ea81eb8710e90eee052b55781a:-614925279</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ws_operation_e4ed352247eb8710490f8c64116d432e</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ws_operation"&gt;&lt;sys_ws_operation action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;consumes&gt;application/json,application/xml,text/xml&lt;/consumes&gt;&lt;consumes_customized&gt;false&lt;/consumes_customized&gt;&lt;default_operation_uri/&gt;&lt;enforce_acl/&gt;&lt;http_method&gt;POST&lt;/http_method&gt;&lt;name&gt;batch&lt;/name&gt;&lt;operation_script&gt;&lt;![CDATA[// Scripted REST resource: POST /batch  (NGI Synthetic Loader)
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    if (!gs.hasRole('admin')) {
+        response.setStatus(403);
+        response.setBody({ error: 'admin role required' });
+        return;
+    }
+    try {
+        response.setStatus(200);
+        response.setBody(new NGISynthLoader().loadBatch(request.body.data));
+    } catch (e) {
+        response.setStatus(400);
+        response.setBody({ error: String(e) });
+    }
+})(request, response);
+]]&gt;&lt;/operation_script&gt;&lt;operation_uri&gt;/api/1814931/ngi_synth/batch&lt;/operation_uri&gt;&lt;produces&gt;application/json,application/xml,text/xml&lt;/produces&gt;&lt;produces_customized&gt;false&lt;/produces_customized&gt;&lt;relative_path&gt;/batch&lt;/relative_path&gt;&lt;request_example/&gt;&lt;requires_acl_authorization&gt;true&lt;/requires_acl_authorization&gt;&lt;requires_authentication&gt;true&lt;/requires_authentication&gt;&lt;requires_snc_internal_role&gt;true&lt;/requires_snc_internal_role&gt;&lt;short_description/&gt;&lt;support_trailing_slash&gt;false&lt;/support_trailing_slash&gt;&lt;sys_class_name&gt;sys_ws_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:28:07&lt;/sys_created_on&gt;&lt;sys_id&gt;e4ed352247eb8710490f8c64116d432e&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;batch&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ws_operation_e4ed352247eb8710490f8c64116d432e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:28:07&lt;/sys_updated_on&gt;&lt;web_service_definition display_value="NGI Synthetic Loader"&gt;d736e1aa47e78710490f8c64116d43b0&lt;/web_service_definition&gt;&lt;web_service_version/&gt;&lt;/sys_ws_operation&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;e4ed352247eb8710490f8c64116d432e&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-28 16:28:07&lt;/sys_created_on&gt;&lt;sys_id&gt;0b2ef9aa47ab8710490f8c64116d4334&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-28 16:28:07&lt;/sys_updated_on&gt;&lt;table&gt;sys_ws_operation&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-2043638364</payload_hash>
+<remote_update_set display_value="NGI-P0-01-synthetic-loader">8fd015be476b0b10490f8c64116d4319</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-29 07:48:38</sys_created_on>
+<sys_id>cbd019be476b0b10490f8c64116d436e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1a0e8d859b70000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-29 07:48:38</sys_updated_on>
+<table/>
+<target_name>batch</target_name>
+<type>Scripted REST Resource</type>
+<update_domain>global</update_domain>
+<update_guid>0f2e7d22d9eb8710d778882f62a12685</update_guid>
+<update_guid_history>0f2e7d22d9eb8710d778882f62a12685:-2043638364</update_guid_history>
 <update_set display_value=""/>
 <view/>
 </sys_update_xml>

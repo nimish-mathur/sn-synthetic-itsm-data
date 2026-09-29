@@ -153,13 +153,28 @@ python -m sn_synth load ──HTTPS POST──► Scripted REST API "NGI Synthet
 - **Credentials:** stored once in Windows Credential Manager via `python -m sn_synth credentials --set` (verified against the instance before saving); lookup order `SN_PASSWORD` → git-ignored `.env` file → secure store → prompt. A `.env` file is refused if `.gitignore` does not exclude it. Never written to the repo, logs or console.
 - **After the load, the REST API is deactivated.** A write endpoint that bypasses business rules must not stay open. Deviation from configuration-over-customization, documented in best-practices-references.md.
 
-### Browser route (no API password)
+### Browser route (no API password) – used for the load
+The REST route was built and tested, but API password logins returned 401 on the PDI while UI login worked. The load therefore used the browser route below; the Scripted REST API is deactivated.
+
+
 When password logins to the API are not possible, the same loader runs inside ServiceNow: `python -m sn_synth bundle` writes ~73 ASCII-only JSON files (≤ 1,000 records each) to `output/upload/`. They are attached to the Fix Script **NGI Synthetic Load** (`loader/servicenow/fix-script-ngi-synthetic-load.js`), which runs in the background as the logged-in admin, calls `NGISynthLoader` in slices of 500, and writes its results as a log attachment on the same record. Modes: `smoke`, `load`, `rollback`. Attachments are deleted after the load.
 
-## 14. Rollback
+## 14. Load result (2026-09-28, Brazil Patch 0 PDI)
+| Table | Ground truth | Instance |
+|---|---|---|
+| sys_user / groups / members | 3,500 / 12 / 64 | 3,500 / 12 / 64 |
+| change_request | 2,688 | 2,688 |
+| incident | 19,637 | 19,637 |
+| task_sla | 39,274 | 39,274 |
+
+Incident states match exactly (New 40, In Progress 35, On Hold 41, Resolved 340, Closed 18,810, Canceled 371). Cross-checks: cancelled SLAs = 2 × cancelled incidents (742); paused SLAs = on-hold incidents (41); in-progress SLAs = open resolution SLAs (75) + unanswered response SLAs of New incidents (40) = 115; 0 SLA rows without a definition. Load time: 5 min reference data (business rules on), 18 min history.
+
+**After the load, active SLAs continue live.** ServiceNow's SLA recalculation job updates *active* task_sla rows (incidents still open at the cut-off: 156 rows, 0.4 %). Within hours of the load it had recalculated 50 of them (`sys_updated_by = system`), using its own state: paused rows show `business_percentage = 0` because the engine has no record of time elapsed before the pause, and 3 rows lost their breach flag (P2/P3/P4 resolution, −1 each vs. ground truth). Completed and cancelled SLAs (99.6 %) are never touched, so historic trends are unaffected. **Rule:** the ground truth describes the data at the cut-off; reconciliations (P4) compare completed SLAs, or snapshot the instance before the recalculation job runs.
+
+## 15. Rollback
 `task_sla` and reference tables have no `correlation_id`. Every export therefore writes `manifest.json` (sys_ids per table). `python -m sn_synth rollback --yes` deletes by that manifest, children before parents, never by broad queries.
 
-## 15. Known limitations
+## 16. Known limitations
 - No audit, journal or metric history: the activity stream is empty on historic records.
 - Only the final assignment group is stored; intermediate groups of reassigned incidents are not.
 - SLA rows are computed by the generator, not by the SLA engine. `percentage` / `time_left` follow a documented approximation; analytics use `has_breached`, `business_percentage` and `business_duration`.
@@ -167,6 +182,11 @@ When password logins to the API are not possible, the same loader runs inside Se
 - The escalation routing placeholder `<region>` resolves to the caller site's Workplace Support group.
 - Changes carry no change model (`chg_model`), risk, CI or approval records; the Brazil `model` change type is not used.
 - Incident close codes are case-sensitive values with spaces (e.g. `Solution provided`), used exactly as on the instance.
+- **No incident → change link on the instance.** The Brazil PDI has neither `incident.caused_by` nor `incident.rfc`; `caused_by` is generated but dropped at load (Fix Script `DROP_FIELDS`). The ERP wave remains visible through date, subcategory `erp` and the SAP group; the link stays in the ground truth for Power BI / P4. Adding it in ServiceNow (custom field vs task relationship) is a P1 design decision.
+- `incident.made_sla` is set by the SLA engine, so history kept the default `true`; corrected after load by `loader/servicenow/fix-made-sla.bg.js`. Analytics should use `task_sla.has_breached`.
+- `opened_by` defaults to the loading admin on every incident: not a meaningful breakdown.
+- Active SLA rows (open incidents at the cut-off) are recalculated by the live SLA engine after loading and drift from the ground truth; the generator does not write `pause_time`, so paused rows restart from 0 % in the engine's view.
+- Loading users with business rules on creates one notification device (`cmn_notif_device`) per user; these are not in the manifest, so a user rollback leaves them behind.
 
-## 16. Instance facts
+## 17. Instance facts
 Values read from the PDI are held in `instance_facts` in `config/ngi.yaml`, separate from business settings. They are refreshed from the instance with `now-sdk query` when the release changes.

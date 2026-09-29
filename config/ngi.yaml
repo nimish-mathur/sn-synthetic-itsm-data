@@ -244,8 +244,8 @@ story_events:
 # --- Loader transport (T8.8) ------------------------------------------------
 loader:
   instance: dev395964
-  base_path: "/api/1814931/ngi_synth"   # copy "Base API path" from the Scripted REST API record
-  user: admin                             # password: env var SN_PASSWORD, or prompted – never stored
+  base_path: "/api/1814931/ngi_synth"    # Base API path of the Scripted REST API record (T8.8)
+  user: admin                             # password: Windows Credential Manager (credentials --set), SN_PASSWORD, or prompt
   timeout_seconds: 120
   retries: 3
 
@@ -291,6 +291,7 @@ instance_facts:
                     duration, end_time, has_breached, original_breach_time, pause_duration, pause_time, percentage,
                     planned_end_time, schedule, sla, stage, start_time, sys_created_by, sys_created_on, sys_id,
                     sys_mod_count, sys_updated_by, sys_updated_on, task, timezone, time_left]   # file 24
+  incident_has_caused_by: false     # T9: no incident -> change_request reference on this PDI (caused_by, rfc absent)
   mandatory_when_resolved:          # files 21–22: only one active data policy with mandatory rules
     incident: [close_code, close_notes]
     change_request: []
